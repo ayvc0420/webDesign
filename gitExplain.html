@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>介紹Git</title>
+    <link rel="stylesheet" href="scss/reset.css">
+    <link rel="stylesheet" href="scss/style.css">
+</head>
+<body>
+    
+    <nav>
+
+        <ul class="nav_menu">
+            <span id="menuTarget"></span>
+            <a href="index.html">
+                <img src="./images/logo.webp" alt="logo">
+            </a>
+            <li class="menu1"><a href="./htmlExplain.html">HTML</a></li>
+            <li class="menu2"><a href="./cssExplain.html">CSS</a></li>
+            <li class="menu3"><a href="./jsExplain.html">JavaScript</a></li>
+            <li class="menu4"><a href="./vueExplain.html">Vue</a></li>
+            <li class="menu5"><a href="javascript:;">前端更多技術<img src="images/chevron-down.svg" alt="更多資訊"></a>
+                <ul>
+                    <li><a href="./gitExplain.html">Git</a></li>
+                    <li><a href="./regexExplain.html">Regex</a></li>
+                    <li><a href="./svgExplain.html">svg</a></li>
+                    <li><a href="./seoExplain.html">Seo</a></li>
+                    <li><a href="./jqueryExplain.html">jQuery</a></li>
+                    <li><a href="./dockerExplain.html">Docker</a></li>
+                    <li><a href="./cicdExplain.html">CI/CD</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div id="touchMenu">
+            <svg width="50" height="40" class="svg1" id="svg1">
+                <line x1="10" y1="10" x2="40" y2="10" stroke="black" stroke-width="4"> </line>
+                <line x1="10" y1="20" x2="40" y2="20" stroke="black" stroke-width="4"> </line>
+                <line x1="10" y1="30" x2="40" y2="30" stroke="black" stroke-width="4"> </line>
+            </svg>
+            <svg width="50" height="40" class="svg2" id="svg2">
+                <line x1="10" y1="30" x2="40" y2="10" stroke="black" stroke-width="4"> </line>
+                <line x1="10" y1="10" x2="40" y2="30" stroke="black" stroke-width="4"> </line>
+            </svg>
+        </div>
+
+        <ul class="mob_menu">
+            <li class="menu1"><a href="./index.html">首頁</a></li>
+            <li class="menu1"><a href="./htmlExplain.html">HTML</a></li>
+            <li class="menu2"><a href="./cssExplain.html">CSS</a></li>
+            <li class="menu3"><a href="./jsExplain.html">JavaScript</a></li>
+            <li class="menu4"><a href="./vueExplain.html">Vue</a></li>
+            <li class="menu5"><a href="javascript:;">前端更多技術</a></li>
+            <ul class="menu5_more">
+                <li><a href="./gitExplain.html">Git</a></li>
+                <li><a href="./regexExplain.html">Regex</a></li>
+                <li><a href="./svgExplain.html">svg</a></li>
+                <li><a href="./seoExplain.html">Seo</a></li>
+                <li><a href="./jqueryExplain.html">jQuery</a></li>
+                <li><a href="./dockerExplain.html">Docker</a></li>
+                <li><a href="./cicdExplain.html">CI/CD</a></li>
+            </ul>
+        </ul>
+    </nav>
+
+    <div class="breadcrumbs">當前位置: <a href="index.html">首頁</a> <a href="javascript:;">前端更多技術</a> <a href="./gitExplain.html">Git</a></div>
+    <article class="banner" id="banner">
+        <div class="banner_left" @click.stop="imgSwitch(keyN-1)">
+            <img src="./images/chevron-left.svg">
+        </div>
+        <div class="banner_right" @click.stop="imgSwitch(keyN+1)">
+            <img src="./images/chevron-right.svg">
+        </div>
+        <a v-for="(img,index) in banner" :href="img.href" v-show="index === bannerKey && width>=1024" :class="{show:index == bannerKey}" ><img :src="img.src" alt="img.alt"></a> 
+        <a v-for="(img,index) in mobBanner" :href="img.href" v-show="index === mobBannerKey && width<=1023" :class="{show:index == mobBannerKey}" ><img :src="img.src" alt="img.alt"></a>
+    </article>
+    <main>
+
+        
+        <section class="content">
+
+            <header class="header">
+                <h2>前言</h2>
+                <p>Git是一種版本控制系統，傳統確保專案開發時可以回到上一個<del>存檔點</del>記錄點時，會使用copy的方式將整個專案資料夾進行複製，但經過多次的修改資料夾越來越多且命名繁雜，因此2005年<span title="Linux設計者">Linus Benedict Torvalds</span>以GUN條款釋出Git，最初為作者為了更好管理Linux核心而設計出現已經是全球大小專案皆會使用。</p>
+            </header>
+
+            <div class="code">
+                <h3>Git介紹</h3>
+                <ul class="icon_check">
+                    <p class="mark">有哪些開發者會使用Git?</p>
+                    <li>團隊專案開發</li>
+                    <li>個人專案開發</li>
+                    <li>平時自行開發/測試項目</li>
+                    <li>需要軟體追蹤檔案更改紀錄的開發者</li>
+                </ul>
+                <ul class="mg_top10 flex wrap left icon_check">
+                    <p class="mark">使用Git的優點</p>
+                    <li>可以自由切換任一時間的紀錄點</li>
+                    <li>指令不出錯情況下不會丟失任何檔案</li>
+                    <li>可以找出每行程式碼是出自哪位工程師的手(找戰犯專用)</li>
+                    <li>擁有遠端倉庫的情況下就算整台電腦掛掉也能輕鬆復原專案</li>
+                    <li>比起copy保存檔案的方式更節省空間使用率</li>
+                    <li>可以快速建立一套初始化專案設定</li>
+                    <li>免費、開源</li>
+                </ul>
+                <ul class="mg_top10 flex wrap left icon_x">
+                    <p class="mark">使用Git的缺點</p>
+                    <li>需要額外花費時間學習Git的指令</li>
+                    <li>雖然入門門檻低但需要精通Git的指令非常困難</li>
+                </ul>
+                <h3>應該要如何使用Git</h3>
+                <p>Windows的環境下須至<a href="https://git-scm.com/" target="new">Git官網</a>安裝Git套件，Linux以及Mac系統已經內建在終端機下可以直接執行。</p>
+                <p>使用Git前必須先建立Git配置，將資料夾用vs code開啟後在終端機介面執行<span class="mark">git init</span>指令即可完成建立Git設定的動作。</p>
+                <p>以下內容使用環境皆為Windows平台vs code編輯器</p>
+                <h3>Git指令</h3>
+                <ol>
+                    <li>git init</li>
+                    <p>在終端機當前的位置建立Git設定</p>
+                </ol>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; ayvc0420</p>
+        <div>
+            本站最佳瀏覽解析度為1920x1080
+        </div> 
+    </footer>
+
+
+
+<script src="./js/vue_2.6.14.js"></script>
+<script src="./js/layout.js"></script>
+</body>
+</html>
