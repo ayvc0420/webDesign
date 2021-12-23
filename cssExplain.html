@@ -90,15 +90,15 @@
 
             <header class="header">
                 <h2>前言</h2>
-                <p>CSS是控制呈現在網頁中元素的技術，好比HTML是骨架，而CSS就是皮膚，而透過CSS的樣式調整可以將網頁的區塊任意改變，以下圖示為例，利用CSS將區塊拼湊成一個網頁，用以呈現給使用者。</p>
+                <p>CSS是控制呈現在網頁中元素的技術，好比HTML是骨架，而css就是皮膚，而透過css的樣式調整可以將網頁呈現的畫面任意改變，以下圖示為例，利用css將區塊拼湊成一個網頁，用以呈現給使用者。</p>
                 <img src="./images/css_label.png" alt="網頁中區塊的圖片" title="網頁區塊圖片">
-                <p>CSS與UI/UX息息相關，在網頁中如何不使用文字透過CSS呈現樣式也可以讓使用者了解含意是一條每位網頁設計師必修之路。</p>
+                <p>CSS與UI/UX息息相關，在網頁中如何不使用文字透過css呈現樣式也可以讓使用者了解含意是一條每位網頁設計師必修之路。</p>
             </header>
 
 
             <div class="code">
                 <h3>CSS使用說明</h3>
-                <p>在網頁中有許多種方式可以對元素進行樣式設定，以下舉出最常見的三種設定style方式</p>
+                <p>在網頁中有許多種方式可以對元素進行樣式設定，在開始css前建議先安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>使用Live Server開發時儲存檔案會自動重新載入畫面可以省下手動重新整理的時間，以下舉出最常見的三種設定style方式</p>
                 <ol>
                     <li>&lt;h4 style="color: blue; font-size:30px">我是第一段測試文字&lt;/h4> </li>
                     <p>網頁中會呈現</p><h4 style="color: blue; font-size:30px">我是第一段測試文字</h4>
@@ -274,13 +274,111 @@
                 <p>以上，是最常見的35種css語法，在這裡僅針對參數做簡單說明，更詳細的屬性參數與使用說明需參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax" target="new">MDN CSS說明</a>。</p>
                 <p>其中css語法有些為縮寫可接受多個參數，有些必須與前置參數才可使用，要想徹底熟練運用這些語法只有經過不斷的練習與使用才能達成。</p>
                 <p>針對display:flex屬性在這裡推薦一款<a href="https://flexboxfroggy.com/#zh-tw" target="new">青蛙遊戲</a>可以有效幫助了解屬性。</p>
-
-
-
+                <h3>預處理器</h3>
+                <p>在css中經常會做重複同樣的事，尤其開發中大型網站時浪費在這上面的時間會更加明顯，因此使用預處理器處理css可以有效減少重複程式碼的編寫時間。</p>
+                <p>目前主流預處理器有LESS、SASS、SCSS三種，以下以SCSS做介紹</p>
+                <ul class="mg_top10 flex wrap left icon_check">
+                    <p class="mark">使用SCSS的好處</p>
+                    <li>省下大量重複的class名稱，巢狀結構下優勢體現越多</li>
+                    <li>可以透過變數的方式統一樣式使用/修改</li>
+                    <li>可以使用JS的函式功能透過呼叫給予參數經過計算得出回傳值</li>
+                    <li>模組化設計，提升資源使用效率以及方便管理</li>
+                    <li>可以引用他人的SCSS工具包就可以快速使用計算功能</li>
+                </ul>
+                <ul class="mg_top10 flex wrap left icon_x">
+                    <p class="mark">使用SCSS的缺點</p>
+                    <li>需要額外的時間成本學習，初次面對程式的人較難以精通</li>
+                    <li>沒了</li>
+                </ul>
+                <p>看起來使用SCSS幾乎百利而無一害對吧?在開始編寫SCSS前除了要安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>之外，還要安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass" target="new">Live Sass Compiler</a>，後者可以協助我們將scss轉譯成css。</p>
+                <p>新增一個名為style.scss檔案後使用vs code右下角Watch Sass按鈕執行Live Sass Compiler服務，只要在style.scss底下編寫相關語法儲存後就會被自動轉譯成同名.css檔案產出。</p>
+                <p>以下是一個scss轉譯過程影片。</p>
+                <video src="./video/scss.mp4" controls class="video mg_top10"></video>
+                <h3>開始使用SCSS</h3>
+                <p>以下是CSS與SCSS所使用的程式碼</p>
+                <ol>
+                    HTML結構:
+                    <li>
+    <pre>
+    &lt;div class="wrap">
+        &lt;div>
+            &lt;p>left&lt;/p>
+        &lt;/div>
+        &lt;div>
+            &lt;p>right&lt;/p>
+        &lt;/div>
+    &lt;/div></pre>
+                </li>
+            使用css編寫:
+                <li>
+    <pre>
+    .wrap{
+        width:500px;
+        background-color:yellow;
+        display: flex;
+    }
+    .wrap>div{
+        width:50%;
+        margin: 10px;
+        background-color:orange;
+    }
+    .wrap>div>p{
+        font-size: 20px;
+        color: blue;
+        letter-spacing: 0.9px;
+        text-align: center;
+    }</pre>
+                    </li>
+                
+                使用scss編寫:
+                <li>
+    <pre>
+    .wrap{
+        width:500px;
+        background-color:yellow;
+        display: flex;
+        >div{
+            width:50%;
+            margin:10px;
+            background-color:orange;
+            >p{
+                font-size:20px;
+                color:blue;
+                letter-spacing: 0.9px;
+                text-align: center;
+            }
+        }
+    }</pre>
+                </li>
+                <p>在寫法上是否非常相似?在使用scss時並不建議用巢狀選取的方式選過多層，與css一樣避免後續權重計算複雜造成維護困難，當然scss的作用可不只有這一點而已，下面針對更多scss應用作介紹。</p>
+            </ol>
+            <h3>變數</h3>
+            <p>變數是程式語言中一定會存在的東西，但是這裡的變數只是基本應用，對於新手並不會有太大的負擔。</p>
+            <p>與程式一樣，變數的位置通常在最頂端，以下是一些基本應用。</p>
+            <ol>
+                <li>
+    <pre>
+    $text:20px;
+    $textColor:white;
+    $textHoverColor:orange;
+    div{
+        font-size:$text;
+        color:$textColor;
+        >span{
+            font-size:$text*2;
+            color:$textColor;
+        }
+        >span:hover{
+            color:$textHoverColor;
+        }
+    }</pre>
+                </li>
+            </ol>
             </div>
 
 
         </section>
+
 
         <article class="end_text">
             <h2>小結</h2>

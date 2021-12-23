@@ -335,7 +335,11 @@ ul.icon_x li{
             margin: 10px 0;
             color: yellow;
         }
-        >img{
+        img{
+            width: 100%;
+            border-radius: 8px;
+        }
+        .img img{
             width: 100%;
             border-radius: 8px;
         }
@@ -352,6 +356,9 @@ ul.icon_x li{
         }
         .flex_left{
             align-items: left;
+        }
+        .video{
+            width: 100%;
         }
     }
 
@@ -381,14 +388,36 @@ ul.icon_x li{
 }
 
 footer{
-    padding: 20px 0;
+    padding: 20px 0 40px 0;
     color: white;
     background-color: black;
     text-align: center;
+    position: relative;
     >div{
         padding-top: 15px;
+        a.footer_img{
+            color: white;
+            width: 50px;
+            transition: all .3s;
+        }
+        a:hover{
+            color: orange;
+        }
+    }
+    .left{
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        z-index: 65535;
+    }
+    .right{
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        z-index: 65535;
     }
 }
+
 
 @media screen and (max-width:1023px) {
     .nav_menu{
@@ -457,6 +486,7 @@ footer{
             height: auto;
             min-height: 90vh;
             margin: auto;
+            object-fit: cover;
         }
         >.banner_left{
             left: 5%;
@@ -485,6 +515,20 @@ footer{
             >div:nth-of-type(even){
                 order: -1;
             }
+        }
+    }
+    footer{
+        .left{
+            position: fixed;
+            left: -200%;
+            bottom: 10px;
+            display: block;
+            top: 75%;
+            transition: left .3s;
+        }
+        .right{
+            right: 20px;
+            top: -10px;
         }
     }
 }

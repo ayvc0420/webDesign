@@ -442,7 +442,12 @@ ul.icon_x li {
   color: yellow;
 }
 
-.content .code > img {
+.content .code img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.content .code .img img {
   width: 100%;
   border-radius: 8px;
 }
@@ -475,6 +480,10 @@ ul.icon_x li {
           align-items: left;
 }
 
+.content .code .video {
+  width: 100%;
+}
+
 .end_text {
   text-align: center;
   margin-bottom: 30px;
@@ -504,14 +513,40 @@ ul.icon_x li {
 }
 
 footer {
-  padding: 20px 0;
+  padding: 20px 0 40px 0;
   color: white;
   background-color: black;
   text-align: center;
+  position: relative;
 }
 
 footer > div {
   padding-top: 15px;
+}
+
+footer > div a.footer_img {
+  color: white;
+  width: 50px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+footer > div a:hover {
+  color: orange;
+}
+
+footer .left {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  z-index: 65535;
+}
+
+footer .right {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 65535;
 }
 
 @media screen and (max-width: 1023px) {
@@ -601,6 +636,8 @@ footer > div {
     height: auto;
     min-height: 90vh;
     margin: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .banner > .banner_left {
     left: 5%;
@@ -630,6 +667,19 @@ footer > div {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
+  }
+  footer .left {
+    position: fixed;
+    left: -200%;
+    bottom: 10px;
+    display: block;
+    top: 75%;
+    -webkit-transition: left .3s;
+    transition: left .3s;
+  }
+  footer .right {
+    right: 20px;
+    top: -10px;
   }
 }
 /*# sourceMappingURL=style.css.map */

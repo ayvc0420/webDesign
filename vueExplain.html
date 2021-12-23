@@ -163,10 +163,11 @@
             &lt;div v-show="show">{{showData}}&lt;/div>
             &lt;div>{{presetData}}&lt;/div>
             &lt;input type="text" v-model="userInput" placeholder="嘗試更改我">
-            &lt;div>{{userInput}}&lt;/div>
+            &lt;div>:{{userInput}}&lt;/div>
             &lt;input type="text" v-model="userInput2" @keyup.enter="showUserData2" placeholder="更改我之後按下Enter">
             &lt;div v-show="show2">{{viewInput2}}&lt;/div>
             &lt;div>
+                陣列顯示的資料:
                 &lt;span v-for="item in groupName">
                     {{item}}
                 &lt;/span>
@@ -208,10 +209,11 @@
                         <div v-show="show">{{showData}}</div>
                         <div>{{presetData}}</div>
                         <input type="text" v-model="userInput" placeholder="嘗試更改我">
-                        <div>{{userInput}}</div>
+                        <div>:{{userInput}}</div>
                         <input type="text" v-model="userInput2" @keyup.enter="showUserData2" placeholder="更改我之後按下Enter">
                         <div v-show="show2">{{viewInput2}}</div>
                         <div>
+                            陣列顯示的資料:
                             <span v-for="item in groupName">
                                 {{item}}
                             </span>
@@ -234,23 +236,6 @@
 
 
 
-<script>
-    new Vue({
-        el:'#12',
-        data:{
-
-        },
-        computed:{
-
-        },
-        methods: {
-            
-        },
-        mounted() {
-            
-        },
-    })
-</script>
 
     </main>
 

@@ -7,6 +7,7 @@
     <title>介紹Git</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="scss/jquery.fancybox.min.css">
 </head>
 <body>
     
@@ -112,15 +113,67 @@
                 <h3>應該要如何使用Git</h3>
                 <p>Windows的環境下須至<a href="https://git-scm.com/" target="new">Git官網</a>安裝Git套件，Linux以及Mac系統已經內建在終端機下可以直接執行。</p>
                 <p>使用Git前必須先建立Git配置，將資料夾用vs code開啟後在終端機介面執行<span class="mark">git init</span>指令即可完成建立Git設定的動作。</p>
-                <p>以下內容使用環境皆為Windows平台vs code編輯器</p>
-                <h3>Git指令</h3>
+                <p>本篇不針對創建使用者資訊作介紹，詳細請參考<a href="https://w3c.hexschool.com/git/8a39ab5" target="new">六角-Git設定個人資訊</a>、<a href="https://medium.com/henrys-jottings/git-2-%E4%BD%BF%E7%94%A8%E8%80%85%E8%A8%AD%E5%AE%9A-%E5%88%9D%E6%9C%9F%E4%BD%BF%E7%94%A8-fcce01702be8" target="new">Git使用者設定教學</a> </p>
+                <p>以下內容使用環境為Windows平台vs code編輯器、Git GUI圖形介面工具Git Graph</p>
+                <h3>Git常見指令</h3>
                 <ol>
                     <li>git init</li>
                     <p>在終端機當前的位置建立Git設定</p>
+                    <li>git branch</li>
+                    <p>查看現有分支</p>
+                    <li>git branch name</li>
+                    <p>新增name分支，如果存在會報錯</p>
+                    <li>git branch -d name</li>
+                    <p>刪除name分支，如果不存在會報錯</p>
+                    <li>git checkout name</li>
+                    <p>切換至name分支，填入tag標籤時也可切換至tag標籤記錄點</p>
+                    <li>git checkout -b name</li>
+                    <p>切換至name分支，如果不存在會目前位置自動新增</p>
+                    <li>git add fileName.txt</li>
+                    <p>將fileName.txt當下狀態加入追蹤，追蹤後修改儲存並檔案需要再次追蹤</p>
+                    <li>git add .</li>
+                    <p>將終端機所在位置底下的所有項目進行追蹤</p>
+                    <li>git status</li>
+                    <p>顯示整個git工作區尚未追蹤的檔案</p>
+                    <li>git commit -m "msg"</li>
+                    <p>將已追蹤的項目加上msg後提交存為記錄點</p>
+                    <li>git commit --amend -m "newMsg"</li>
+                    <p>將最後一個commit點的訊息變更為newMsg訊息</p>
+                    <li>git reflog</li>
+                    <p>顯示最近git的指令，包含SHA-1碼、分支操作，拯救reset錯誤動作的紀錄</p>
+                    <li>git tag v0.1</li>
+                    <p>將當前所在位置設置一個標籤，標籤紀錄為v0.1，如果要針對commit等對象加入標籤需使用HEAD分離狀態切換，建議使用GUI工具</p>
+                    <li>git merge targetName</li>
+                    <p>將目前所在分支與targetName分支進行融合，融合後會創立一個新的commit點，如果同一支檔案內容有衝突需手動排除</p>
+                    <li>git rebase</li>
+                    <p>合併分支，與merge不同的是rebase會將目前這個分支的紀錄點融合至對象分支，當有衝突時與merge一樣需排查，完畢後使用git rebase --continue完成rebase動作，反悔輸入--abort</p>
+                    <li>git reset commit的SHA-1碼(最低輸入4碼以上，建議輸入6碼)</li>
+                    <p>回到對應SHA-1碼的記錄點，操作失誤且丟失當前SHA-1碼時使用git reflog救回</p>
+                    <li>git reset --hard HEAD^</li>
+                    <p>把當前分支的動作回到上一步，注意是當前分支不是全部操作</p>
+                    <li>git reset --hard HEAD~5</li>
+                    <p>把當前分支的動作回到上五步，注意是當前分支不是全部操作</p>
                 </ol>
+                <p>以上是比較基本的Git指令，其中每個指令後面皆有許多參數，有點複雜嗎?那就實際動作操作看看吧!</p>
+                <p>以下是使用add checkout commit merge基本指令的Git GUI圖型</p>
+                <a href="./images/git01.webp" data-fancybox="git" data-caption="Git圖形化" class="img"><img src="./images/git01.webp" alt="Git圖形化 圖片" title="Git圖形化"></a>
+                <p>其中，當我執行merge動作時同一個檔案內有不同分支寫進的紀錄會導致檔案衝突需要人工排除。</p>
+                <a href="./images/git02.webp" data-fancybox="git" data-caption="Git merge衝突訊息" class="img"><img src="./images/git02.webp" alt="Git merge衝突訊息 圖片" title="Git merge衝突訊息"></a>
+                <p>如圖所示，這邊我們選擇Accept Both Changes都保留，須注意具體程式碼行數可能會被有所移動需要重新確認。</P>
+                <p>最後切換至master分支對branch3做merge動作後就會變成這樣。</p>
+                <a href="./images/git03.webp" data-fancybox="git" data-caption="Git master merge動作" class="img"><img src="./images/git03.webp" alt="Git master merge動作 圖片" title="Git master merge動作"></a>
+                <p>最終在master的時候 01.html檔案內容。</p>
+                <a href="./images/git04.webp" data-fancybox="git" data-caption="Git 01.html內容" class="img"><img src="./images/git04.webp" alt="Git 01.html內容 圖片" title="Git 01.html內容"></a>
+                <p>最終在master的時候 02.html檔案內容。</p>
+                <a href="./images/git05.webp" data-fancybox="git" data-caption="Git 02.html內容" class="img"><img src="./images/git05.webp" alt="Git 02.html內容 圖片" title="Git 02.html內容"></a>
             </div>
         </section>
-
+        <article class="end_text">
+            <h2>小結</h2>
+            <p>透過上述介紹應該對Git有基本了解了吧?</p>
+            <p>Git不止可以協同多人作業，自行開發專案時也是非常好用的工具，更詳細的Git使用可以參考<br><a href="https://backlog.com/git-tutorial/tw/" target="new">猴子都能懂Git指南</a>、<a href="https://learngitbranching.js.org/?locale=zh_TW" target="new">透過遊戲學習Git</a>、<a href="https://www.youtube.com/watch?v=F-ubntPTT1k" target="new">Alex Git基礎開始</a></p>
+            <p>備註:使用Git下指令時建議先確認目前HEAD位置，可以使用Git Graph工具藍色圓圈就是當前HEAD位置，或使用cat .git/HEAD指令查看當前所在分支位置。</p>
+        </article>
 
     </main>
 
@@ -132,8 +185,9 @@
     </footer>
 
 
-
-<script src="./js/vue_2.6.14.js"></script>
-<script src="./js/layout.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/jquery.fancybox.min.js"></script>
+    <script src="./js/vue_2.6.14.js"></script>
+    <script src="./js/layout.js"></script>
 </body>
 </html>

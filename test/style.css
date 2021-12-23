@@ -1,0 +1,14 @@
+div {
+  font-size: 20px;
+  color: white;
+}
+
+div > span {
+  font-size: 40px;
+  color: white;
+}
+
+div > span:hover {
+  color: orange;
+}
+/*# sourceMappingURL=style.css.map */
