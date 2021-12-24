@@ -25,8 +25,7 @@
                 <ul>
                     <li><a href="./gitExplain.html">Git</a></li>
                     <li><a href="./regexExplain.html">Regex</a></li>
-                    <li><a href="./svgExplain.html">svg</a></li>
-                    <li><a href="./seoExplain.html">Seo</a></li>
+                    <li><a href="./svgExplain.html">Svg</a></li>
                     <li><a href="./jqueryExplain.html">jQuery</a></li>
                     <li><a href="./dockerExplain.html">Docker</a></li>
                     <li><a href="./cicdExplain.html">CI/CD</a></li>
@@ -55,8 +54,7 @@
             <ul class="menu5_more">
                 <li><a href="./gitExplain.html">Git</a></li>
                 <li><a href="./regexExplain.html">Regex</a></li>
-                <li><a href="./svgExplain.html">svg</a></li>
-                <li><a href="./seoExplain.html">Seo</a></li>
+                <li><a href="./svgExplain.html">Svg</a></li>
                 <li><a href="./jqueryExplain.html">jQuery</a></li>
                 <li><a href="./dockerExplain.html">Docker</a></li>
                 <li><a href="./cicdExplain.html">CI/CD</a></li>
@@ -82,27 +80,122 @@
 
             <header class="header">
                 <h2>前言</h2>
-                <p></p>
+                <p>Regex又稱正規表達式、正則表達式，是一種透過條件選取符合規則的字元技術，最常見的功能如尋找/取代，在開始前建議對陣列要有基本認識。</p>
             </header>
 
-            <article>
+            <div class="code">
+                <h3>規則</h3>
+                <p>常見的規則有空白字元、數字、英文、漢字等等，在處理漢字、日文等字元時會使用Unicode字元，以下是常見的規則，語言環境為JS。</p>
+                <ol>
+                    <li>\s</li>
+                    <p>所有空白字元包含換行</p>
+                    <li>\w</li>
+                    <p>是一種縮寫，等同於[a-zA-Z0-9_]</p>
+                    <li>\d</li>
+                    <p>等同於[0-9]</p>
+                    <li>^</li>
+                    <p>開頭</p>
+                    <li>.</li>
+                    <p>任意字元</p>
+                    <li>$</li>
+                    <p>結尾</p>
+                    <li>*</li>
+                    <p>規則無限延伸，例如.*就是選取所有任意字元</p>
+                    <li>{}</li>
+                    <p>長度條件</p>
+                    <li>[01A3]</li>
+                    <p>[]內輸入字元比對符合字元，這邊使用[01A3]意思為找出0、1、A、3 四個字元，區分大小寫</p>
+                    <li>[a-z]</li>
+                    <p>與上相似，找出a-z全部的字元，區分大小寫</p>
+                    <li>^[\u4e00-\u9fa5]+$</li>
+                    <p>純中文字元</p>
+                    <li>^[a-zA-Z0-9]+$</li>
+                    <p>英文與數字字元</p>
+                    <li>^[\u0800-\u4e00]+$</li>
+                    <p>純日文字元</p>
+                    <li>.*google\.com.*</li>
+                    <p>只要有google.com的字元就把整段全選</p>
+                    <li>^[0-9]{10}$</li>
+                    <p>整段字元長度為10，且全部必須為數字</p>
+                </ol>
+                <p>以上是最基本的正規表達式應用，以下是透過JS使用Regex條件判斷input內輸入的值是否為數字或英文</p>
+                <ol>
+                    <li>
+    <pre>
+    &lt;input type="text" id="input1" placeholder="輸入任意文字">
+    &lt;button id="btn1">查看結果&lt;/button>
+    &lt;span id="view">&lt;/span>
+    &lt;script>
+        const numberEnglish = /^[a-zA-Z0-9]+$/
+        const input1 = document.getElementById('input1')
+        const btn1 = document.getElementById('btn1')
+        const view = document.getElementById('view')
+        btn1.addEventListener('click',function(){
+            if(numberEnglish.test(input1.value)){
+                view.textContent = '符合'
+            }else{
+                view.textContent = '不符合，需輸入數字或英文'
+            }
+        })
+    &lt;/script>
+    </pre>
+                    </li>
+                    <input type="text" id="input1" placeholder="輸入任意文字">
+                    <button id="btn1">查看結果</button>
+                    <span id="view"></span>
+                </ol>
+            </div>
 
-            </article>
+
         </section>
+        
+        <article class="end_text">
+            <h2>小結</h2>
+            <p>Regex不僅進行大量資料處裡非常很用也能做條件判斷，最常見的電子信箱驗證、大小寫等都是用Regex規則去判斷。</p>
+            <p>學習Regex時推薦使用<a href="https://regex101.com/" target="new">Regex101</a>網站，可以快速了解當前規則選取的字元是哪些。</p>
+        </article>
 
 
     </main>
 
+
     <footer>
-        <p>&copy; ayvc0420</p>
+        <p>&copy; ayvc0420</p> 
         <div>
-            本站最佳瀏覽解析度為1920x1080
-        </div> 
+            本站最佳瀏覽解析度為1920x1080，不支援IE瀏覽器
+        </div>
+        <div class="left">
+            <a href="javascript:;" id="goTop" class="footer_img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="right">
+            <a href="javascript:;" title="只是一個github的圖示" class="footer_img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40 " fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </div>
     </footer>
 
 
 
-<script src="./js/vue_2.6.14.js"></script>
-<script src="./js/layout.js"></script>
+    <script src="./js/vue_2.6.14.js"></script>
+    <script src="./js/layout.js"></script>
+    <script>
+        const numberEnglish = /^[a-zA-Z0-9]+$/
+        const input1 = document.getElementById('input1')
+        const btn1 = document.getElementById('btn1')
+        const view = document.getElementById('view')
+        btn1.addEventListener('click',function(){
+            if(numberEnglish.test(input1.value)){
+                view.textContent = '符合'
+            }else{
+                view.textContent = '不符合，需輸入數字或英文'
+            }
+        })
+    </script>
 </body>
 </html>

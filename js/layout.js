@@ -114,6 +114,44 @@
     })
 
 
+    const goTop = document.getElementById('goTop')
+    const footerLeft = document.querySelector('footer>.left')
+    goTop.addEventListener('click',goUp)
+
+    function goUp(){
+        let loopUp = setInterval(()=>{
+            if(document.documentElement.scrollTop <= 25){
+                clearInterval(loopUp)
+            }
+            const n = document.documentElement.scrollTop - 50
+            document.documentElement.scrollTop = n
+        },3)
+    }
+    let nowWidth = window.innerWidth;
+    window.addEventListener('resize',function(){
+        nowWidth = window.innerWidth;
+    })
+    window.addEventListener('scroll',function(){
+        if(nowWidth <= 1023){
+            const nowHeight = document.documentElement.scrollTop
+            nowHeight >= 400 ? footerLeft.style.left = '20px' : footerLeft.style.left = '-200%'
+        }else{
+            footerLeft.style.left = '20px'
+        }
+    })
+
+    // const goTop = document.getElementById('goTop')
+    // goTop.addEventListener('click',function(){
+    //     window.requestAnimationFrame(goUp)
+    // })
+
+    // function goUp(){
+    //     const n = document.documentElement.scrollTop - 50
+    //     document.documentElement.scrollTop = n
+    //     if(document.documentElement.scrollTop >= 25){
+    //         window.requestAnimationFrame(goUp)
+    //     }
+    // }
 
     
 

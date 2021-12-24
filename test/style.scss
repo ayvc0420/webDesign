@@ -1,15 +1,19 @@
-$text:20px;
-$text:20px;
-$textColor:white;
-$textHoverColor:orange;
-div{
-    font-size:$text;
-    color:$textColor;
-    >span{
-        font-size:$text*2;
-        color:$textColor;
+.wrap{
+    width:500px;
+    background-color:yellow;
+    display: flex;
+    &:hover{
+        background-color: red;
     }
-    >span:hover{
-        color:$textHoverColor;
+    >div{
+        width:50%;
+        margin:10px;
+        background-color:orange;
+        >p{
+            font-size:20px;
+            color:blue;
+            letter-spacing: 0.9px;
+            text-align: center;
+        }
     }
 }

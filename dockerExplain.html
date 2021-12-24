@@ -25,8 +25,7 @@
                 <ul>
                     <li><a href="./gitExplain.html">Git</a></li>
                     <li><a href="./regexExplain.html">Regex</a></li>
-                    <li><a href="./svgExplain.html">svg</a></li>
-                    <li><a href="./seoExplain.html">Seo</a></li>
+                    <li><a href="./svgExplain.html">Svg</a></li>
                     <li><a href="./jqueryExplain.html">jQuery</a></li>
                     <li><a href="./dockerExplain.html">Docker</a></li>
                     <li><a href="./cicdExplain.html">CI/CD</a></li>
@@ -55,8 +54,7 @@
             <ul class="menu5_more">
                 <li><a href="./gitExplain.html">Git</a></li>
                 <li><a href="./regexExplain.html">Regex</a></li>
-                <li><a href="./svgExplain.html">svg</a></li>
-                <li><a href="./seoExplain.html">Seo</a></li>
+                <li><a href="./svgExplain.html">Svg</a></li>
                 <li><a href="./jqueryExplain.html">jQuery</a></li>
                 <li><a href="./dockerExplain.html">Docker</a></li>
                 <li><a href="./cicdExplain.html">CI/CD</a></li>
@@ -82,22 +80,50 @@
 
             <header class="header">
                 <h2>前言</h2>
-                <p></p>
+                <p>前端開發會因為環境影響造成功能不同，如團隊開發作業系統的差異提升開發困難，因此使用Docker可以有效處理這個問題，本篇僅介紹Docker並不含任何實作。</p>
             </header>
 
-            <article>
+            <div class="code">
+                <h3>Docker是什麼?</h3>
+                <p>Docker是一種讓使用者透過容器的方式將應用程式在內執行，與虛擬機相似但是執行所需的資源可以相差數十倍，Docker的資源使用率更高也更好管理，使用Docker前須先熟悉Linux常見指令。</p>
+                <h3>容器</h3>
+                <p>容器(container)是Docker將應用程式包裝起來的環境，容器可以透過映像檔產生，在容器內執行一切操作皆不會影響本機環境，容器使用完畢後可以直接刪除實施用完即棄的概念</p>
+                <h3>映像檔</h3>
+                <p>映像檔(images)是Docker建立容器必備的檔案，一個映像檔內會含有執行所需要的工具如後端會含有node.js，映像檔實作可以參考<a href="https://ithelp.ithome.com.tw/articles/10205977?sc=pt" target="new">製作自己的映像檔</a>，一般而言前端並不會自製映像檔，這個映像檔可能是來自後端或倉庫拉下使用。</p>
+                <h3>倉庫</h3>
+                <p>用來存放映像檔的位置，包含私有與公開，與Git倉庫類似概念。</p>
 
-            </article>
+                <p>更詳細的Docker可以參考<a href="https://www.youtube.com/watch?v=CxNm-3EedyA" target="new">Docker開發環境建置</a>、<a href="https://ithelp.ithome.com.tw/users/20102562/ironman/3746" target="new">Docker從安裝到進階應用</a>。</p>
+            </div>
         </section>
+
+        <article class="end_text">
+            <h2>小結</h2>
+            <p>如果是剛接觸程式的初學者那麼建議你先緩緩不要碰Docker，如果應用上須面對多平台兼容性與版本問題那麼你應該已經會Docker了。</p>
+        </article>
 
 
     </main>
 
     <footer>
-        <p>&copy; ayvc0420</p>
+        <p>&copy; ayvc0420</p> 
         <div>
-            本站最佳瀏覽解析度為1920x1080
-        </div> 
+            本站最佳瀏覽解析度為1920x1080，不支援IE瀏覽器
+        </div>
+        <div class="left">
+            <a href="javascript:;" id="goTop" class="footer_img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="right">
+            <a href="javascript:;" title="只是一個github的圖示" class="footer_img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40 " fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </div>
     </footer>
 
 
