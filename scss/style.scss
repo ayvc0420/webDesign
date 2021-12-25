@@ -19,6 +19,12 @@ body.fixed_nav{
         width: 100%;
     }
 }
+
+// Vue
+[v-cloak]{
+    display: none;
+}
+
 .mob_menu{
     display: none;
 }
@@ -33,6 +39,8 @@ body.fixed_nav{
     width: 100%;
     position: relative;
     z-index: 1;
+    padding-left: 50px;
+    box-sizing: border-box;
     #menuTarget{
         position: absolute;
         top: -100px;
@@ -47,16 +55,16 @@ body.fixed_nav{
         background: linear-gradient(50deg,rgb(240, 176, 0) , rgb(240, 204, 0));
         width: 200px;
         a{
-            width: calc(100% - 20px);
+            width: calc(100% - 50px);
             display: inline-block;
             padding: 10px;
-        }
-        a:hover{
-            color: black;
-            background-color: white;
+            &:hover{
+                color: black;
+                background-color: white;
+            }
         }
     }
-    >li{
+    >li:not(.menu0){
         a{
             display: inline-block;
             padding: 25px;
@@ -66,35 +74,32 @@ body.fixed_nav{
     >li:hover ul{
         display: block;
     }
-    .menu1{
-        order: -2;
+    // 預計只對menu5寫額外ul區域 但因Vue的for關係導致產生多個ul
+    >li:not(.menu5)>ul{
+        display: none;
     }
-    .menu2{
-        order: -1;
+    a{
+        text-decoration: none;
+        color: $hoverHrefColor;
     }
-    .menu3{
-        order: 1;
-    }
-    .menu4{
-        order: 3;
-    }
-    .menu5{
-        order: 4;
-    }
-    a[href='index.html']{
+    a[href='./index.html']{
         order: 2;
         img{
             width: 250px;
             margin: 0 20px;
         }
     }
-
-    a{
-        text-decoration: none;
-        color: $hoverHrefColor;
-    }
     img{
         vertical-align: middle;
+    }
+    .menu0{
+        order: 0;
+    }
+    .menu1{
+        order: -2;
+    }
+    .menu2{
+        order: -1;
     }
 
 }
@@ -112,6 +117,9 @@ main{
     a{
         text-decoration: none;
         color: $hrefColor;
+        &:focus{
+            color: $hoverHrefColor;
+        }
     }
     a+a::before{
         content: ' / ';
@@ -120,18 +128,18 @@ main{
 }
 .banner{
     max-width: 1600px;
-    height: 800px;
+    min-height: 800px;
     margin: auto ;
     overflow: hidden;
     position: relative;
     perspective: 500px;
     padding: 0 20px;
-
     &:hover>div{
         opacity: 1;
     }
     div>img{
         width: 40px;
+        
     }
     >div{
         position: absolute;
@@ -152,6 +160,7 @@ main{
         width: 100%;
         margin: 0 auto;
         position: relative;
+        
         img{
             width: 100%;
             height: 800px;
@@ -204,6 +213,18 @@ ul.disc li{
     list-style: disc;
     margin-left: 20px;
 }
+.w100{
+    width: 100px;
+}
+.w200{
+    width: 200px;
+}
+.w300{
+    width: 300px;
+}
+.w400{
+    width: 400px;
+}
 .content{
     border: 5px ridge;
     border-radius: 6px;
@@ -234,7 +255,11 @@ ul.disc li{
             line-height: 1.5;
         }
         >img{
+            width: 100%;
             margin: 15px auto;
+            &.max_w400{
+                max-width: 400px;
+            }
         }
     }
     >article{
@@ -277,80 +302,104 @@ ul.disc li{
     }
 
     // css
-    .code{
-        max-width: 800px;
-        margin: 30px auto;
-        line-height: 1.6;
-        >h3{
-            font-size: $text*1.5;
-            text-align: center;
-            color: yellow;
-            margin-top: 20px;
-        }
-        p{
-            font-size: $text;
-        }
-        .mark{
-            color: chartreuse;
-            font-weight: 900;
-        }
-        ol{
+.code{
+    max-width: 800px;
+    margin: 30px auto;
+    line-height: 1.6;
+    >h3{
+        font-size: $text*1.5;
+        text-align: center;
+        color: yellow;
+        margin-top: 20px;
+    }
+    p{
+        font-size: $text;
+    }
+    .mark{
+        color: chartreuse;
+        font-weight: 900;
+    }
+    ol{
+        list-style: decimal;
+        font-size: $text;
+        padding-left: 35px;
+        >li{
             list-style: decimal;
-            font-size: $text;
-            padding-left: 35px;
-            >li{
-                list-style: decimal;
-                border-left: 4px solid chartreuse;
-                padding-left: 5px;
-                background-color: rgba(255, 255, 255,.2);
-            }
-            pre{
-                white-space: pre-wrap !important;
-                white-space: -moz-pre-wrap !important;
-                word-wrap: break-word;
-            }
+            border-left: 4px solid chartreuse;
+            padding-left: 5px;
+            background-color: rgba(255, 255, 255,.2);
         }
-        // 註解
-        ol{
-            background-color: cadetblue;
-        }
-        // li文字
-        ol li{
-            color: blue;
-        }
-        
-        // css code內標題文字
-        >h5{
-            font-size: $text*1.2;
-            margin: 10px 0;
-            color: yellow;
-        }
-        img{
-            width: 100%;
-            border-radius: 8px;
-        }
-        .img img{
-            width: 100%;
-            border-radius: 8px;
-        }
-        .flex{
-            display: flex;
-            flex-direction: column;
-        }
-        .flex_center{
-            align-items: center;
-        }
-        .wrap{
-            flex-wrap: wrap;
+        pre{
+            white-space: pre-wrap !important;
+            white-space: -moz-pre-wrap !important;
             word-wrap: break-word;
         }
-        .flex_left{
-            align-items: left;
+    }
+    // 註解
+    ol{
+        background-color: cadetblue;
+    }
+    // li文字 pre
+    ol li{
+        color: rgb(30, 2, 187);
+    }
+    // css code內標題文字
+    >h5{
+        font-size: $text*1.2;
+        margin: 10px 0;
+        color: yellow;
+    }
+    img{
+        width: 100%;
+        border-radius: 8px;
+    }
+    img.max_w400{
+        max-width: 400px;
+    }
+    .img img{
+        width: 100%;
+        border-radius: 8px;
+    }
+    .flex{
+        display: flex;
+        flex-direction: column;
+    }
+    .flex_center{
+        align-items: center;
+    }
+    .wrap{
+        flex-wrap: wrap;
+        word-wrap: break-word;
+    }
+    .flex_left{
+        align-items: left;
+    }
+    .video{
+        width: 100%;
+    }
+    // 問題如JQ
+    .problem{
+        >.q{
+            background-color: rgba(255, 74, 74,.6);
+            &::before{
+                content: 'Q : ';
+            }
         }
-        .video{
-            width: 100%;
+        >.a{
+            background-color: rgba(201, 7, 7,.6);
+            &::before{
+                content: 'A : ';
+            }
+        }
+        >.a2{
+            background-color: rgba(201, 7, 7,.6);
+        }
+        >pre{
+            color: blue;
+            background-color: rgba(255, 121, 80,.6);
         }
     }
+}
 
 }
 
@@ -371,9 +420,9 @@ ul.disc li{
         color: $hrefColor;
         text-decoration: none;
         transition: all .3s;
-    }
-    a:hover{
-        color: $hoverHrefColor;
+        &:hover{
+            color: $hoverHrefColor;
+        }
     }
     h3{
         font-size: $text*1.5;
@@ -406,13 +455,13 @@ footer{
         display: block;
         position: absolute;
         left: 20px;
-        top: 10px;
+        bottom: 60px;
         z-index: 65535;
     }
     .right{
         position: absolute;
         right: 20px;
-        top: 10px;
+        bottom: 60px;
         z-index: 65535;
     }
 }
@@ -425,7 +474,7 @@ footer{
     #touchMenu{
         width: 50px;
         height: 40px;
-        border:2px solid black;
+        border:2px solid rgb(0, 0, 0);
         border-radius: 5px;
         display: block;
         position: absolute;
@@ -436,7 +485,10 @@ footer{
             position: absolute;
             cursor: pointer;
         }
-        >#svg2{
+        .svg1{
+            opacity: 1;
+        }
+        .svg2{
             opacity: 0;
         }
     }
@@ -451,27 +503,29 @@ footer{
         top: -200%;
         z-index: 10;
         transition: all .5s ease;
-        background-color: gray;
+        background-color: rgba(30, 30, 30,.9);
         width: 100%;
         height: 100vh;
         z-index: 200;
         a{
             text-decoration: none;
-            color: $hoverHrefColor
+            color: $hoverHrefColor;
+            &:focus{
+                color: $hrefColor;
+            }
         }
-        a:focus{
-            color: $hrefColor;
-        }
-        >.menu5_more{
+        .menu5_more{
             width: 100%;
             height: 100vh;
-            left: -200%;
+            top: 0;
+            left: -500%;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
             position: absolute;
             transition: all .3s;
+            z-index: 65535;
         }
     }
     .code{
@@ -479,6 +533,7 @@ footer{
         box-sizing: border-box;
     }
     .banner{
+        min-height: 90vh;
         >div{
             opacity: 1;
         }
@@ -499,9 +554,6 @@ footer{
     }
     .breadcrumbs{
         padding-left: 20px;
-        >a:focus{
-            color: $hoverHrefColor;
-        }
     }
     .content{
         >header.header{
@@ -523,7 +575,7 @@ footer{
             left: -200%;
             bottom: 10px;
             display: block;
-            top: 87.5%;
+            bottom: 60px;
             transition: left .3s;
         }
         .right{

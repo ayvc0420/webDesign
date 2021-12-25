@@ -10,25 +10,13 @@
 </head>
 <body>
     
-    <nav>
+    <nav id="nav" v-cloak>
 
         <ul class="nav_menu">
             <span id="menuTarget"></span>
-            <a href="index.html">
-                <img src="./images/logo.webp" alt="logo">
-            </a>
-            <li class="menu1"><a href="./htmlExplain.html">HTML</a></li>
-            <li class="menu2"><a href="./cssExplain.html">CSS</a></li>
-            <li class="menu3"><a href="./jsExplain.html">JavaScript</a></li>
-            <li class="menu4"><a href="./vueExplain.html">Vue</a></li>
-            <li class="menu5"><a href="javascript:;">前端更多技術<img src="images/chevron-down.svg" alt="更多資訊"></a>
+            <li v-for="item in navList" :class="item.class"><a :href="item.href" v-html="item.name"></a>
                 <ul>
-                    <li><a href="./gitExplain.html">Git</a></li>
-                    <li><a href="./regexExplain.html">Regex</a></li>
-                    <li><a href="./svgExplain.html">Svg</a></li>
-                    <li><a href="./jqueryExplain.html">jQuery</a></li>
-                    <li><a href="./dockerExplain.html">Docker</a></li>
-                    <li><a href="./cicdExplain.html">CI/CD</a></li>
+                    <li v-for="liList in item.ul"><a :href="liList.href">{{liList.name}}</a></li>
                 </ul>
             </li>
         </ul>
@@ -45,25 +33,18 @@
         </div>
 
         <ul class="mob_menu">
-            <li class="menu1"><a href="./index.html">首頁</a></li>
-            <li class="menu1"><a href="./htmlExplain.html">HTML</a></li>
-            <li class="menu2"><a href="./cssExplain.html">CSS</a></li>
-            <li class="menu3"><a href="./jsExplain.html">JavaScript</a></li>
-            <li class="menu4"><a href="./vueExplain.html">Vue</a></li>
-            <li class="menu5"><a href="javascript:;">前端更多技術</a></li>
-            <ul class="menu5_more">
-                <li><a href="./gitExplain.html">Git</a></li>
-                <li><a href="./regexExplain.html">Regex</a></li>
-                <li><a href="./svgExplain.html">Svg</a></li>
-                <li><a href="./jqueryExplain.html">jQuery</a></li>
-                <li><a href="./dockerExplain.html">Docker</a></li>
-                <li><a href="./cicdExplain.html">CI/CD</a></li>
-            </ul>
+            <li v-for="item in mobNavList" :class="item.class"><a :href="item.href" v-html="item.name"></a>
+            </li>
+            <div>
+                <ul class="menu5_more">
+                    <li v-for="item in mobNavList[5].ul"><a :href="item.href">{{item.name}}</a></li>
+                </ul>
+            </div>
         </ul>
     </nav>
 
-    <div class="breadcrumbs">當前位置: <a href="index.html">首頁</a> <a href="javascript:;">前端更多技術</a> <a href="./jqueryExplain.html">jQuery</a></div>
-    <article class="banner" id="banner">
+    <div class="breadcrumbs">當前位置: <a href="./index.html">首頁</a> <a href="javascript:;">前端更多技術</a> <a href="./jqueryExplain.html">jQuery</a></div>
+    <article class="banner" id="banner" v-cloak>
         <div class="banner_left" @click.stop="imgSwitch(keyN-1)">
             <img src="./images/chevron-left.svg">
         </div>
@@ -80,12 +61,62 @@
 
             <header class="header">
                 <h2>前言</h2>
-                <p></p>
+                <p>jQuery是使用JS構成的函式庫，jQ官方的口號是「寫的少，做的多」，即使對程式語言沒有經驗也可以透過jQ包裝的語法輕鬆寫出各種動畫、功能效果，雖然jQuery可以幫助你快速編寫JS效果也非常適合JS初學者學習，但建議還是需要對JS有基本的了解再操作會比較妥當。</p>
+                <p>在使用jQuery的同時，可以參考<a href="https://api.jquery.com/" target="new">官方API文件</a>，文件說明每項語法可以做到哪些功能，在初期學習時幫助非常大。</p>
             </header>
+            
 
-            <article>
+            <div class="code">
+                <h3>jQuery介紹</h3>
+                <ul class="mg_top10 flex wrap icon_check">
+                    <p class="mark">jQuery的優點</p>
+                    <li>學習成本低，即使是程式新手也能快速上手</li>
+                    <li>語法簡潔且直觀，有非常多現有資源可以使用(套件)</li>
+                    <li>兼容各種瀏覽器，不用額外針對特別瀏覽器進行處理(尤其是IE)</li>
+                    <li>jQuery背後有非常大的社群幫助維護，就算有BUG也會短時間內就修正</li>
+                    <li>選擇器使用方法統一，尤其JS使用前必須先選擇對象這點jQuery的選擇器優勢就非常明顯</li>
+                </ul>
+                <ul class="mg_top10 mg_bottom10 flex wrap left icon_x">
+                    <p class="mark">jQuery的缺點</p>
+                    <li>jQuery的寫法是典型的鏈式寫法，針對單一DOM進行過多操作會造成一大串可讀性差的語法</li>
+                    <li>與JS一樣再大型網站中使用jQuery會比使用<a href="./vueExplain.html" target="new">三大框架</a>還要弱勢且維護困難</li>
+                    <li>需要額外載入套件，與直接執行JS的效率比起來還要再下降一階</li>
+                    <li>載入過多套件容易產生衝突需要手動排除</li>
+                    <li>社群正在開始排斥使用jQuery</li>
+                </ul>
+                <h3>常見疑問</h3>
+                <div class="problem">
+                    <p class="q">jQuery正在被社群棄用那我為什麼要學它?</p>
+                    <p class="a">即使現今社群在排斥使用它，但jQuery的占比率仍然是遠遠超過其他三大框架加起來(截止2021年底)，原因就是上手相對容易。</p>
+                    <p class="q">你說jQuery選取多方便到底是多方便?</p>
+                    <p class="a">以常見的針對DOM進行修改文字內容用JS寫會是:<br>document.getElementById('news').textContent = 'JS edit'<br>用jQuery寫則會是:<br>$('#news').text('jQ edit')。</p>
+                    <p class="q">學也是學，那我為什麼不直接使用ARV其中一種框架就好?</p>
+                    <p class="a">針對這點如果還沒有看過本站的<a href="./vueExplain.html" target="new">Vue介紹</a>的話建議先看一下，沒有萬用的工具只有在對應場景用出符合的工具才會獲得最大效益，ARV三種框架在越大型的網站優勢體現越大，而jQ並非不能做大型網站只是相較之下明顯劣勢，無論jQ的選取有多方便畢竟都還是以針對DOM進行操作的概念去執行無法與資料驅動框架比較。</p>
+                    <p class="q">那我如果想快點學到實用技能例如飛來飛去的動畫，應該選哪個學?</p>
+                    <p class="a">如果是初學程式的話我會建議你了解JS變數與陣列等基本概念開始學jQuery，否則如果寫出</p>
+    <pre>
+    let n = [10,20,30,40,50]
+    let n1 = [...n]
+    $('#news').text(n1)</pre>
+                    <p class="a2">這種程式要在IE執行，我只能說jQ畢竟還是程式語言而不是自然語言...。</p>
+                    <p class="q">所以說了這麼多你到底是主要寫什麼?</p>
+                    <p class="a">作為一個邁向優良工程師之路努力的菜鳥無論是JS或jQ我都會寫，差別度只是在熟不熟悉而已，而如果要成為前端工程師那我建議你還是主要走向JS，早學晚學都要學後面還有nodeJS、框架等等...，好吧，我承認我主要是寫JS，寧願燒腦不支援IE我也不寫jQ。</p>
 
-            </article>
+                </div>
+
+                <h3>開始寫jQuery</h3>
+                <p>首先若不是特殊需求如支援IE6、7舊版瀏覽器建議使用最新的壓縮版本(2021年底為v3.6.0)，以下皆使用官網提供的CDN方式載入。</p>
+                <ol>
+                    <li>
+    <pre>
+    &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js">&lt;/script></pre>
+                    </li>
+                    <p>如果是開發產品一律強烈建議將js檔載入到本地端進行引用，避免CDN發生意外問題導致功能異常造成不必要損失。</p>
+                </ol>
+
+
+            </div>
+
         </section>
 
 
@@ -114,7 +145,12 @@
 
 
 
-<script src="./js/vue_2.6.14.js"></script>
-<script src="./js/layout.js"></script>
+    <script src="./js/vue_2.6.14.js"></script>
+    <script type="module">
+        import './js/navVue.js'
+        import './js/bannerVue.js'
+        import './js/layout.js'
+    </script>
+
 </body>
 </html>

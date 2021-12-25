@@ -10,25 +10,13 @@
 </head>
 <body>
     
-    <nav>
+    <nav id="nav" v-cloak>
 
         <ul class="nav_menu">
             <span id="menuTarget"></span>
-            <a href="index.html">
-                <img src="./images/logo.webp" alt="logo">
-            </a>
-            <li class="menu1"><a href="./htmlExplain.html">HTML</a></li>
-            <li class="menu2"><a href="./cssExplain.html">CSS</a></li>
-            <li class="menu3"><a href="./jsExplain.html">JavaScript</a></li>
-            <li class="menu4"><a href="./vueExplain.html">Vue</a></li>
-            <li class="menu5"><a href="javascript:;">前端更多技術<img src="images/chevron-down.svg" alt="更多資訊"></a>
+            <li v-for="item in navList" :class="item.class"><a :href="item.href" v-html="item.name"></a>
                 <ul>
-                    <li><a href="./gitExplain.html">Git</a></li>
-                    <li><a href="./regexExplain.html">Regex</a></li>
-                    <li><a href="./svgExplain.html">Svg</a></li>
-                    <li><a href="./jqueryExplain.html">jQuery</a></li>
-                    <li><a href="./dockerExplain.html">Docker</a></li>
-                    <li><a href="./cicdExplain.html">CI/CD</a></li>
+                    <li v-for="liList in item.ul"><a :href="liList.href">{{liList.name}}</a></li>
                 </ul>
             </li>
         </ul>
@@ -45,25 +33,19 @@
         </div>
 
         <ul class="mob_menu">
-            <li class="menu1"><a href="./index.html">首頁</a></li>
-            <li class="menu1"><a href="./htmlExplain.html">HTML</a></li>
-            <li class="menu2"><a href="./cssExplain.html">CSS</a></li>
-            <li class="menu3"><a href="./jsExplain.html">JavaScript</a></li>
-            <li class="menu4"><a href="./vueExplain.html">Vue</a></li>
-            <li class="menu5"><a href="javascript:;">前端更多技術</a></li>
-            <ul class="menu5_more">
-                <li><a href="./gitExplain.html">Git</a></li>
-                <li><a href="./regexExplain.html">Regex</a></li>
-                <li><a href="./svgExplain.html">Svg</a></li>
-                <li><a href="./jqueryExplain.html">jQuery</a></li>
-                <li><a href="./dockerExplain.html">Docker</a></li>
-                <li><a href="./cicdExplain.html">CI/CD</a></li>
-            </ul>
+            <li v-for="item in mobNavList" :class="item.class"><a :href="item.href" v-html="item.name"></a>
+            </li>
+            <div>
+                <ul class="menu5_more">
+                    <li v-for="item in mobNavList[5].ul"><a :href="item.href">{{item.name}}</a></li>
+                </ul>
+            </div>
         </ul>
     </nav>
 
+
     <div class="breadcrumbs">當前位置: <a href="./index.html">首頁</a><a href="./jqueryExplain.html">JavaScript</a></div>
-    <article class="banner" id="banner">
+    <article class="banner" id="banner" v-cloak>
         <div class="banner_left" @click.stop="imgSwitch(keyN-1)">
             <img src="./images/chevron-left.svg">
         </div>
@@ -87,7 +69,7 @@
 
             <div class="code">
                 <h3>JavaScript使用說明</h3>
-                <p>JS的使用方式分為script標籤內以及script src導入的方式將JS檔導入置網頁，早期網站會將src位置放在head標籤內但隨著網頁技術進步，需要的JS檔案容量與日俱增進而影響載入時間因此src位置放在/body標籤前可以優先載入文字與畫面再載入功能，在進行變數或函式命名時建議都以駝峰式命名為主，以下將分成多個單元對JS進行簡單介紹。</p>
+                <p>JS的使用方式有在script標籤內直接使用、src導入的方式導入JS檔案使用、import、export的方式導入，早期網站使用src時會將位置放在head標籤內但隨著網頁技術進步，需要的JS檔案容量與日俱增進而影響載入時間因此將位置改至/body標籤前可以優先載入文字與畫面再載入JS功能，在進行變數或函式命名時建議都以駝峰式命名為主，以下將分成多個單元對JS進行簡單介紹。</p>
                     <h3>console</h3>
                 <ol>
                     <li>
@@ -274,6 +256,9 @@
                     <p>阻止預設行為如a標籤的網頁跳轉</p>
                     <li>event.stopPropagation()</li>
                     <p>阻止事件冒泡</p>
+                    <li>window.getComputedStyle</li>
+                    <p>獲取dom當前的css屬性，包含css給予的屬性，與target.style獲取屬性不同的是後者只會獲取element.style的屬性，如果沒有對標籤直接下style或在JS中使用element.style的方式控制屬性的話會無法取得值</p>
+                    <p><img src="./images/getCss.webp" alt="getComputedStyle與style 比較差別圖片" class="max_w400"></p>
                 </ol>
                 <p>以上只針對功能做說明，詳細使用方式參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects" target="new">MDN 內建物件說明</a>，除了以上功能外還有非常多功能/參數這邊未提及如動態參數this、同步與非同步ajax、建構函式class，這些使用方式無法用三言兩語帶過，建議透過各類影片如<a href="https://www.youtube.com/watch?v=1pYtVwIAvhY" target="new">影片1</a>、<a href="https://www.youtube.com/watch?v=_vFuDQ_6Xt8" target="new">影片2</a>以及參考MDN文件。</p>
                 <p>如果你是第一次接觸網頁技術那麼你的學習路線圖應該為:HTML>CSS>JS>AJAX技術>node管理>前端框架，JS學習的終點雖然是永無止盡的，但是JS的熱門程度卻是直線上升。</p>
@@ -318,8 +303,12 @@
     </footer>
 
 
+    <script src="./js/vue_2.6.14.js"></script>
+    <script type="module">
+        import './js/navVue.js'
+        import './js/bannerVue.js'
+        import './js/layout.js'
+    </script>
 
-<script src="./js/vue_2.6.14.js"></script>
-<script src="./js/layout.js"></script>
 </body>
 </html>

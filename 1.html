@@ -9,12 +9,18 @@
 
 </head>
 <body>
-    <div class="box">
+    <div class="box" id="news">
         box
     </div>
     <div class="box2">
         box2
     </div>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    let n = [10,20,30,40,50]
+    let n1 = [...n]
+    $('#news').text(n1)
+    </script>
 </body>
 </html>
