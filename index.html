@@ -17,7 +17,27 @@
             opacity: 0;
             transform: translateY(30%);
         }
+        .fb_comments{
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 6px;
+            background-color: rgb(255, 255, 255);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+        .fb_comments>h5{
+            text-align: center;
+            font-weight: 900;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
     </style>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v12.0" nonce="e7yGTiJg"></script>
 </head>
 <body>
     
@@ -106,7 +126,18 @@
             </article>
         </section>
 
+
+        <div>
+            
+        </div>
+
+        <section class="fb_comments">
+            <h5>如有錯誤或需補充還請不吝分享</h5>
+            <div class="fb-comments" data-href="https://ayvc0420.github.io/webDesign/index.html" data-width="400" data-numposts="5"></div>
+        </section>
+
     </main>
+
 
 
     <footer>
@@ -138,7 +169,15 @@
         import './js/layout.js'
         import './js/contentAni.js'
     </script>
-
+    <!-- <script>
+        window.addEventListener('resize',function(){
+            const nowWidth = window.innerWidth;
+            const fb = document.querySelector('.fb-comments')
+            const fbWidth = document.querySelector('.fb-comments').dataset.width
+            console.log(nowWidth)
+            nowWidth <= 600 ? fb.setAttribute('data\-width',nowWidth-50) : fb.setAttribute('data\-width',600)
+        })
+    </script> -->
 </body>
 
 </html>
