@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <link rel="shortcut icon" href="./images/htmlLogo.webp">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>html介紹</title>
+    <meta name="title" content="HTML介紹"/>
+    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/htmlExplain.html"/>
+    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/htmlExplain.html"/>
+    <title>HTML介紹</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
     <style>
@@ -78,22 +82,21 @@
             <header class="header">
                 <h2>前言</h2>
                 <p>HTML是構成網頁的基礎架構，無論是透過JS創造的標籤或使用template語法最後都會被瀏覽器編譯成HTML執行渲染，HTML是一種標籤語法，除了部分特殊的標籤如:input、hr等以外其他語法在撰寫上都必須要有對應的標籤&lt;/>作為封閉。</p>
-                <p>HTML的結構不僅是控制css的要點之一，也是讓搜尋引擎更容易針對網頁進行資料蒐集的重點，在SEO上如何正確使用HTML語意化標籤是前端必須了解的知識，在開始前建議先安裝vs code套件<a href="https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets" target="new">HTML Snippets</a>可以減少撰寫標籤時間，以下用tag代替「標籤」一詞。</p>
+                <p>HTML的結構不僅是控制css的要點之一，也是讓搜尋引擎更容易針對網頁進行資料蒐集的重點，如何正確使用語意化標籤在SEO上會有一定的影響，開始前建議先安裝vs code套件<a href="https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets" target="new">HTML Snippets</a>可以減少撰寫標籤時間，以下用tag代替「標籤」一詞。</p>
             </header>
             <article>
                 <div>
                     <h4>a tag</h4>
                     <p>a tag是超連結的使用方式</p>
                     <ol>
-                        <li><span>&lt;</span>a href="導向連結"><span><</span>/a></li>
-                        <li>可選擇參數target(開啟新視窗方式)、title(提示文字)</li>
+                        <li>&lt;a href="導向連結">&lt;/a><br>可選擇參數target(開啟新視窗方式)、title(提示文字)等</li>
                     </ol>
                 </div>
                 <div>
                     <h4>標題系列tag</h4>
                     <p>文章標題皆建議使用此系列標籤，一般預設由大至小分別會有不同的粗體及字體大小</p>
                     <ol>
-                        <li>由大至小分別有<span>&lt;</span>h1>內容<span>&lt;</span>/h1>~<span>&lt;</span>h6>內容<span>&lt;</span>/h6>
+                        <li>&lt;h1>內容&lt;/h1><br>&lt;h2>內容&lt;/h2><br>...<br>&lt;h6>內容&lt;/h6>
                     </ol>
                 </div>
             </article>
@@ -102,14 +105,14 @@
                     <h4>section tag</h4>
                     <p>section語意為一個獨立區域的部分，一個section內應有標題的結構</p>
                     <ol>
-                        <li><span>&lt;</span>section>其他標籤或內容<span>&lt;</span>section></li>
+                        <li>&lt;section><br>其他標籤及內容<br>&lt;section></li>
                     </ol>
                 </div>
                 <div>
                     <h4>article tag</h4>
                     <p>article語意與section類似，一個article內應有標題、內文或圖片等相關結構</p>
                     <ol>
-                        <li><span>&lt;</span>article>其他標籤或內容<span>&lt;</span>/article></li>
+                        <li>&lt;article><br>其他標籤及內容<br>&lt;/article></li>
                     </ol>
                 </div>
             </article>
@@ -123,7 +126,7 @@
                 </div>
                 <div>
                     <h4>span tag</h4>
-                    <p>span語意為行內的元素，一般用於句子中某部分要進行其他樣式時才會使用</p>
+                    <p>span語意為行內的元素，一般如果用於句子中某部分內容時會套用其他樣式</p>
                     <ol>
                         <li><p>&lt;p>內文內文內文&lt;span>套用其他樣式的內文&lt;/span>&lt;/p></p></li>
                     </ol>
@@ -148,7 +151,7 @@
             <article>
                 <div>
                     <h4>main tag</h4>
-                    <p>main語意為網頁中主要內容區域，main的使用在無障礙網頁中會有體驗良好的效果，一個網頁中不應有超過一個以上的main標籤</p>
+                    <p>main語意為網頁中主要內容區域，使用main在無障礙網頁中會有提升體驗的效果，一個網頁中不應有超過一個以上的main標籤</p>
                     <ol>
                         <li>&lt;main><br>各種標籤及內文<br>&lt;/main></li>
                     </ol>
@@ -221,7 +224,7 @@
                 </div>
                 <div>
                     <h4>html tag</h4>
-                    <p>html標籤是整個網頁檔案最外層的標籤，其內容包含一切網頁文檔標籤，允許在html外的標籤只有!doctype宣告型別</p>
+                    <p>html標籤是整個網頁檔案最外層的標籤，其內容包含一切網頁文檔標籤，允許在html外的標籤只有!doctype宣告檔案型別</p>
                     <ol>
                         <li>&lt;!DOCTYPE html><br>&lt;html lang="網頁語系如zh-TW"><br>&nbsp;&nbsp;&lt;head><br>&nbsp;&nbsp;&lt;/head><br>&nbsp;&nbsp;&lt;body><br>&nbsp;&nbsp;&lt;/body><br>&lt;/html></li>
                     </ol>
@@ -265,7 +268,7 @@
             <article>
                 <div>
                     <h4>script tag</h4>
-                    <p>script內只能使用JS相關語法或搭配參數將JS檔案導入網頁，隨著網頁內容越來越多，script的位置現在大多位於網頁底部&lt;/body>前，避免載入過多功能性套件而產生遲緩讓使用者瀏覽體驗不佳的情況</p>
+                    <p>script內只能使用JS相關語法或搭配src參數將JS檔案導入網頁，隨著網頁內容越來越多，script的位置現在大多位於網頁底部&lt;/body>前，避免優先載入過多JS檔案而HTML、CSS載入緩慢導致使用者瀏覽體驗不佳的情況</p>
                     <ol>
                         <li>&lt;script><br>js語法...<br>&lt;/script></script></li>
                         <li>&lt;script src="js檔案位置"></script></li>
@@ -282,14 +285,14 @@
             <article>
                 <div>
                     <h4>select tag</h4>
-                    <p>select為下拉式選單元件，其子元素必須要有option作為選項</p>
+                    <p>select為下拉式選單元件，其子元素必須要有option作為選項，建議使用參數value</p>
                     <ol>
                         <li>&lt;select><br>&nbsp;&nbsp;&lt;option><br>&nbsp;&nbsp;&nbsp;&nbsp;選項內容<br>&nbsp;&nbsp;&lt;/option><br>&lt;/select></li>
                     </ol>
                 </div>
                 <div>
                     <h4>input tag</h4>
-                    <p>input有非常多類型，使用type參數作為設定如:input type="text"等，若需要使用form表單功能input name參數則為強烈建議填入</p>
+                    <p>input有非常多類型，使用type參數作為設定如:input type="text"等，若需要使用form表單功能input name參數則為強烈建議填入，name用於送出表單後後端根據name判斷格式</p>
                     <ol>
                         <li>&lt;input type="類別" name="input的名稱" value="input的值"></li>
                     </ol>
@@ -301,7 +304,7 @@
         <article class="end_text">
             <h2>小結</h2>
             <p>隨著網頁越來越多元化，如何正確使用HTML標籤建立結構不僅會影響編寫CSS的難易度也會對網站SEO有一定的影響。</p>
-            <p>要了解網頁結構是否有問題可以使用開發人員工具(F12)Elements的功能可以查看區塊。</p>
+            <p>要了解網頁結構是否有問題可以使用開發人員工具(F12)Elements的功能可以查看標籤對應的區塊。</p>
             <p>更多關於網頁元素可以參考<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="new">MDN HTML</a></p>
         </article>
 

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <link rel="shortcut icon" href="./images/logoIcon.webp">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="title" content="SVG介紹"/>
+    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/svgExplain.html"/>
+    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/svgExplain.html"/>
+    <title>SVG介紹</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
 </head>
@@ -61,14 +65,14 @@
 
             <header class="header">
                 <h2>前言</h2>
-                <p>SVG是一種向量圖格式，最大的優點就是縮放大小都不會模糊，在網頁上的icon幾乎都是以SVG的方式製作而成。</p>
+                <p>SVG是一種向量圖格式，最大的優點就是縮放大小都不會模糊，常見的網頁icon幾乎都是以SVG的格式做呈現。</p>
             </header>
 
             <div class="code">
                 <ul class="icon_check">
                     <p class="mark">哪些時候會用到SVG?</p>
                     <li>不希望圖片失真</li>
-                    <li>不想要自己用css手刻一個簡單形狀的圖形</li>
+                    <li>不想要自己用css手刻一個簡單形狀或複雜的圖形</li>
                     <li>想讓圖片檔案更小</li>
                     <li>會常常想修改圖片某一部分如背景、填滿顏色</li>
                 </ul>
@@ -91,48 +95,48 @@
                     <li>text</li>
                     <p>文字參數有x(x座標)、y(y座標)、font-size(字體尺寸)、font-weight(字體粗細)</p>
                 </ol>
-                <p>以上四種是最常見的語法更多polyline、path通常會選擇讓程式產生或可以參考<a href="https://wcc723.github.io/d3js/2014/10/02/Ironman-30-days-03/" target="new">卡斯伯-SVG超硬派了解</a>，每一種語法內都有各自參數要填入才會構成SVG圖示，在HTML上直接使用svg語法時需要包含在SVG標籤內，以下是SVG程式碼範例。</p>
+                <p>以上四種是最常見的語法更多標籤如polyline、path通常會選擇讓程式產生或可以參考<a href="https://wcc723.github.io/d3js/2014/10/02/Ironman-30-days-03/" target="new">卡斯伯-SVG超硬派了解</a>，每一種語法內都有各自參數要填入才會構成SVG圖示，在HTML上直接使用svg語法時需要包含在SVG標籤內，以下是一段SVG程式碼與作用註解。</p>
                 <ol>
                     <li>
     <pre>
     //紅色邊框線svg畫布設定350寬度300高度上下外距10px
-    &lt;svg width="350" height="300" style="border: 1px solid red; margin:10px 0">
+    &lt;svg width="350" height="300" style="border: 1px solid rgb(255, 0, 0); margin:10px 0">
     //方形
-    &lt;rect x="20" y="50 " width="100" height="100" fill="yellow" stroke="black" stroke-width="2">&lt;/rect>
+    &lt;rect x="20" y="50 " width="100" height="100" fill="rgb(255,255,0)" stroke="rgb(0,0,0)" stroke-width="2">&lt;/rect>
     //圓形
-    &lt;circle cx="200" cy="70" r="50" fill="rgb(171, 248, 71)" stroke="white" stroke-width="10">&lt;/circle>
+    &lt;circle cx="200" cy="70" r="50" fill="rgb(171, 248, 71)" stroke="rgb(255,255,255)" stroke-width="10">&lt;/circle>
     //三角形
-    &lt;polygon points="140,140,140,280,280,280" fill="#3cd8ff" stroke="black" stroke-width="3">&lt;/polygon>
+    &lt;polygon points="140,140,140,280,280,280" fill="#3cd8ff" stroke="rgb(0,0,0)" stroke-width="3">&lt;/polygon>
     //常見的漢堡條選單
-    &lt;line x1="70" y1="210" x2="100" y2="210" stroke="black" stroke-width="4">&lt;/line>
-    &lt;line x1="70" y1="220" x2="100" y2="220" stroke="black" stroke-width="4">&lt;/line>
-    &lt;line x1="70" y1="230" x2="100" y2="230" stroke="black" stroke-width="4">&lt;/line>
+    &lt;line x1="70" y1="210" x2="100" y2="210" stroke="rgb(0,0,0)" stroke-width="4">&lt;/line>
+    &lt;line x1="70" y1="220" x2="100" y2="220" stroke="rgb(0,0,0)" stroke-width="4">&lt;/line>
+    &lt;line x1="70" y1="230" x2="100" y2="230" stroke="rgb(0,0,0)" stroke-width="4">&lt;/line>
     //文字
-    &lt;text x="200" y="160" font-size="28px" font-weight="bold">簡單的SVG&lt;/text>
-    &lt;text x="200" y="190" font-size="28px" font-weight="bold">圖示使用&lt;/text>
+    &lt;text x="200" y="160" font-size="28px" font-weight="900">簡單的SVG&lt;/text>
+    &lt;text x="200" y="190" font-size="28px" font-weight="900">圖示使用&lt;/text>
     &lt;/svg></pre>
                     </li>
-                    <svg width="350" height="300" style="border: 1px solid red; margin:10px 0">
-                        <rect x="20" y="50 " width="100" height="100" fill="yellow" stroke="black" stroke-width="2"></rect>
-                        <circle cx="200" cy="70" r="50" fill="rgb(171, 248, 71)" stroke="white" stroke-width="10"></circle>
-                        <polygon points="140,140,140,280,280,280" fill="#3cd8ff" stroke="black" stroke-width="3"></polygon>
-                        <line x1="70" y1="210" x2="100" y2="210" stroke="black" stroke-width="4"></line>
-                        <line x1="70" y1="220" x2="100" y2="220" stroke="black" stroke-width="4"></line>
-                        <line x1="70" y1="230" x2="100" y2="230" stroke="black" stroke-width="4"></line>
-                        <text x="200" y="160" font-size="28px" font-weight="bold">簡單的SVG</text>
-                        <text x="200" y="190" font-size="28px" font-weight="bold">圖示使用</text>
+                    <svg width="350" height="300" style="border: 1px solid rgb(255, 0, 0); margin:10px 0">
+                        <rect x="20" y="50 " width="100" height="100" fill="rgb(255,255,0)" stroke="rgb(0,0,0)" stroke-width="2"></rect>
+                        <circle cx="200" cy="70" r="50" fill="rgb(171, 248, 71)" stroke="rgb(255,255,255)" stroke-width="10"></circle>
+                        <polygon points="140,140,140,280,280,280" fill="#3cd8ff" stroke="rgb(0,0,0)" stroke-width="3"></polygon>
+                        <line x1="70" y1="210" x2="100" y2="210" stroke="rgb(0,0,0)" stroke-width="4"></line>
+                        <line x1="70" y1="220" x2="100" y2="220" stroke="rgb(0,0,0)" stroke-width="4"></line>
+                        <line x1="70" y1="230" x2="100" y2="230" stroke="rgb(0,0,0)" stroke-width="4"></line>
+                        <text x="200" y="160" font-size="28px" font-weight="900">簡單的SVG</text>
+                        <text x="200" y="190" font-size="28px" font-weight="900">圖示使用</text>
                     </svg>
                 </ol>
                 <h3>icon</h3>
                 <p>當然，想要繪製出更精細的形狀是不可能一個點一個點去算的，因此在使用icon圖示時可以參考<a href="https://icons.getbootstrap.com/" target="new">Bootstrap icon</a>，內含超過1500種常見的icon圖示，常見的三種使用方式有:</p>
-                <ul class="disc">
+                <ul class="disc mg_top10 mg_bottom10">
                     <li>直接複製SVG語法貼上</li>
                     <li>下載svg圖檔用img的方式插入</li>
                     <li>使用網站提供的font方式貼上class使用(需使用CDN或import的方式導入檔案)</li>
                 </ul>
                 <p>也可以自行使用軟體程式產出svg如Adobe Illustrator，儲存的方式選擇svg檔案。</p>
                 <img src="./images/svg01.webp" alt="SVG儲存 圖片" style="width: 400px;">
-                就會產出以下這種程式碼
+                <p>就會產出以下這種程式碼</p>
                 <ol class="mg_bottom10">
                     <li>
     <pre id="svgCopy">

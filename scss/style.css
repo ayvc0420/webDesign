@@ -423,6 +423,7 @@ ul.disc li {
 .content .code ol {
   list-style: decimal;
   font-size: 20px;
+  padding: 10px 0;
   padding-left: 35px;
 }
 
@@ -499,7 +500,13 @@ ul.disc li {
   width: 100%;
 }
 
+.content .code .problem {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 .content .code .problem > .q {
+  padding: 5px;
   background-color: rgba(255, 74, 74, 0.6);
 }
 
@@ -508,6 +515,7 @@ ul.disc li {
 }
 
 .content .code .problem > .a {
+  padding: 5px;
   background-color: rgba(201, 7, 7, 0.6);
 }
 
@@ -516,17 +524,29 @@ ul.disc li {
 }
 
 .content .code .problem > .a2 {
+  padding: 5px;
   background-color: rgba(201, 7, 7, 0.6);
 }
 
 .content .code .problem > pre {
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: blue;
   background-color: rgba(255, 121, 80, 0.6);
+}
+
+.content .code .effect_view {
+  background-color: rgba(255, 255, 0, 0.1);
+  margin: 5px 0;
+  padding: 5px;
 }
 
 .end_text {
   text-align: center;
   margin-bottom: 30px;
+  max-width: 1000px;
+  margin: 10px auto;
 }
 
 .end_text h2 {

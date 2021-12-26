@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <link rel="shortcut icon" href="./images/cssLogo.webp">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>css介紹</title>
+    <meta name="title" content="CSS介紹"/>
+    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/cssExplain.html"/>
+    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/cssExplain.html"/>
+    <title>CSS介紹</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
     <style>
@@ -80,14 +84,14 @@
                 <h3>CSS使用說明</h3>
                 <p>在網頁中有許多種方式可以對元素進行樣式設定，在開始css前建議先安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>使用Live Server開發時儲存檔案會自動重新載入畫面可以省下手動重新整理的時間，以下舉出最常見的三種設定style方式</p>
                 <ol>
-                    <li>&lt;h4 style="color: blue; font-size:30px">我是第一段測試文字&lt;/h4> </li>
-                    <p>網頁中會呈現</p><h4 style="color: blue; font-size:30px">我是第一段測試文字</h4>
+                    <li>&lt;h4 style="color: rgb(0, 0, 255); font-size:30px">我是第一段測試文字&lt;/h4> </li>
+                    <p>網頁中會呈現</p><h4 style="color: rgb(0, 0, 255); font-size:30px">我是第一段測試文字</h4>
                     
                     在網頁中任意位置(建議在head標籤內寫入)
                     <li><pre>
     &lt;style>
         .test_text01{
-                    color: yellowgreen;
+                    color: rgb(154, 205, 50);
                     font-size:30px;
         }
     &lt;/style>
@@ -95,7 +99,7 @@
                     後，在任意位置輸入&lt;p class="test_text01">我是第二段測試文字&lt;/p><br>網頁中會呈現
                     <style>
                         .test_text01{
-                            color: yellowgreen;
+                            color: rgb(154, 205, 50);
                             font-size:30px;
                         }
                     </style>
@@ -105,17 +109,17 @@
     &lt;script>
         let test_text02 = document.getElementById('test_text02')
         test_text02.style.fontSize = '30px'
-        test_text02.style.color = 'cyan'
+        test_text02.style.color = 'rgb(0, 255, 255)'
     &lt;/script>
 </pre></li>
                     後在前面的任意位置輸入&lt;p id="test_text02">我是第三段測試文字&lt;/p><br>網頁中會呈現
                     <p id="test_text02">我是第三段測試文字</p>
                 </ol>
                 <br>
-                <p>以上是常見設定style樣式的方式，每個方法都有不同的使用時機，設定網站頁面的css會採用第二種方式去掉頭尾style標籤後獨立製作檔案，新增資料夾命名為css後放入，其css副檔名必須為.css，在head標籤中使用&lt;link rel="stylesheet" href="css位置">導入樣式。</p>
+                <p>以上是常見設定style樣式的方式，每個方法都有不同的使用時機，設定網站頁面的css通常會採用第二種方式去掉頭尾style標籤後獨立製作檔案，新增資料夾命名為css後放入，其css副檔名必須為.css，在head標籤中使用&lt;link rel="stylesheet" href="css位置">導入樣式。</p>
                 <p>css在設定中會有權重問題，一般而言css的權重是由以下由小至大做排序，設定重複的樣式會已權重越大為優先覆蓋。</p>
                 <h5>class > id > 標籤內直接輸入style控制 > !important</h5>
-                <p>其中important的權重是最大的，任何在屬性後方加上!important就會蓋過其他地方設置的屬性，因此若非必要盡量避免使用該參數避免後續維護困難。</p>
+                <p>單一一個class的權重是最小的，而important的權重是最大的，任何在屬性後方加上 !important 就會蓋過其他地方設置的屬性，因此若非必要盡量避免使用該參數避免後續維護困難。</p>
                 <h3>以下將針對CSS的選取器做一些簡單介紹</h3>
                 <ol>
                     <li>#idName</li>
@@ -123,11 +127,11 @@
                     <li>.className .className</li>
                     <p>用途:選取子層所有符合class名稱的元素</p>
                     <li>.className>.className</li>
-                    <p>用途:用以選取子層一層符合class名稱的元素，又稱子彈選取器</p>
+                    <p>用途:選取子層第一層符合class名稱的元素</p>
                     <li>.className + .className</li>
                     <p>用途:選取符合class名稱後一個class名稱的元素</p>
                     <li>.className ~ .className</li>
-                    <p>用途:選取同一層符合class名稱的元素</p>
+                    <p>用途:選取同一層且之後符合class名稱的元素</p>
                     <li>.className[type="text"]</li>
                     <p>用途:選取符合class名稱且帶有type="text"參數的元素，又稱屬性選取器</p>
                     <li>.className.className2</li>
@@ -160,11 +164,11 @@
                     <p>用途:選取符合class名稱的元素，與:before類似，位置在對象的尾字後</p>
                 </ol>
                 <p>以上是我們最常使用到的20種css選取器，在正確的時機使用正確的選擇器會讓專案的開發順利一倍以上不止。</p>
-                <p>透過<a href="https://flukeout.github.io/" target="new">css選取器遊戲</a>可以增強對css選取能力。</p>
-                <h3>以下針對CSS RWD設定進行簡單介紹</h3>
+                <p>透過<a href="https://flukeout.github.io/" target="new">css選取器遊戲</a>可以加強css選取能力。</p>
+                <h3>CSS RWD設定及簡單介紹</h3>
                 
-                <p>近年隨著手機裝置普及化手機版網頁需求大增，由於行動裝置的解析度遠遠低於一般電腦螢幕，在閱讀一般網站時會有頻繁縮放、不易閱讀等情況產生，因此2010年國外著名網頁設計師提出RWD的概念，RWD又稱響應式網頁，是一種透過css的技術切換不同的排版設定</p>
-                <p>RWD是透過css3 @media 技術達成的網頁，由於必須符合多種平台的環境RWD網站的參數多為百分比或相對尺寸(em/rem)，而不是像素(px)，在學習製作網站的過程如何熟練的運用RWD技術是一個非常重要的開發方式。</p>
+                <p>近年隨著手機裝置普及化手機版網頁需求大增，由於行動裝置的解析度遠遠低於一般電腦螢幕，若沒有設定RWD的網站上使用手機瀏覽會有頻繁縮放、不易閱讀等情況產生，因此2010年國外著名網頁設計師提出RWD的概念，RWD又稱響應式網頁，是一種透過css的技術切換不同的排版設定</p>
+                <p>RWD是透過css3 @media 技術達成的網頁，由於RWD必須兼容多平台的瀏覽體驗因此使用RWD的網站參數多為百分比或相對尺寸(em/rem)，而不是像素(px)，在學習製作網站的過程如何熟練的運用RWD技術是一個非常重要的開發方式。</p>
                 <p>@media的參數有all(全部)、print(印表機)、screen(電腦螢幕/手機螢幕等)、speech(螢幕閱讀器)...等，在這邊只針對最泛用的screen做介紹。</p>
                 <ol>    
                     <li>@media screen and (max-width:1024px){ ...css參數 }</li>
@@ -177,8 +181,8 @@
                     <p>針對桌上型螢幕設定的尺寸，觸發條件為當瀏覽器寬度等於或大於1025px且小於等於1680px時</p>
                 </ol>
                 <p>在這裡and是一個條件，一個@media可以有多個條件做判斷，如果不輸入screen and 默認值將會是all，在css權重同等的情況下@media內的css參數會優先執行。</p>
-                <p>知名的網頁框架「Bootstrap」是採用6個尺寸條件為判定基準，分別為低於576px、576~768px、768~992px、992~1200px、1200~1400px、1400px以上，在了解css的網格系統觀念後自行開發類似Bootstrap這類框架的簡易版並不是太困難的事情。</p>
-                <h3>以下針對常見的CSS語法做簡單介紹</h3>
+                <p>知名的網頁框架「Bootstrap」是採用6個尺寸條件為判定基準，分別為低於576px、576~768px、768~992px、992~1200px、1200~1400px、1400px以上，對css有一個系統概念之後自行開發類似Bootstrap的格線系統並不是太難的問題</p>
+                <h3>常見的CSS語法及簡單介紹</h3>
                 <ol>
                     <li>max-width</li>
                     <p>設定元素的最大寬度，當小於時會自動縮小</p>
@@ -227,9 +231,9 @@
                     <li>z-index</li>
                     <p>設定元素的重疊層數，通常與position一起使用</p>
                     <li>display</li>
-                    <p>設定元素的顯示型態，參數有flex(並排)、none(消失)等，flex通常會搭配justify-content、align-items一起使用</p>
+                    <p>設定元素的顯示型態，參數有flex(並排)、none(消失)等，flex通常會搭配justify-content(主軸對齊)、align-items(次軸對齊)一起使用</p>
                     <li>float</li>
-                    <p>設定元素浮動位置</p>
+                    <p>設定元素浮動顯示</p>
                     <li>opacity</li>
                     <p>設定元素透明度</p>
                     <li>transition</li>
@@ -251,16 +255,16 @@
                     <li>perspective</li>
                     <p>設定元素3D可視屬性，該參數會讓元素產生3D立體感</p>
                 </ol>
-                <p>以上，是最常見的35種css語法，在這裡僅針對參數做簡單說明，更詳細的屬性參數與使用說明需參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax" target="new">MDN CSS說明</a>。</p>
+                <p>以上，是最常見的css語法，在這裡僅針對樣式做簡單說明，更詳細的屬性參數與使用說明需參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax" target="new">MDN CSS說明</a>。</p>
                 <p>其中css語法有些為縮寫可接受多個參數，有些必須與前置參數才可使用，要想徹底熟練運用這些語法只有經過不斷的練習與使用才能達成。</p>
-                <p>針對display:flex屬性在這裡推薦一款<a href="https://flexboxfroggy.com/#zh-tw" target="new">青蛙遊戲</a>可以有效幫助了解屬性。</p>
-                <h3>預處理器</h3>
-                <p>在css中經常會做重複同樣的事，尤其開發中大型網站時浪費在這上面的時間會更加明顯，因此使用預處理器處理css可以有效減少重複程式碼的編寫時間。</p>
+                <p>針對display:flex屬性推薦透過<a href="https://flexboxfroggy.com/#zh-tw" target="new">青蛙遊戲</a>可以有效幫助了解flex的應用。</p>
+                <h3 class="mg_bottom10">預處理器</h3>
+                <p>在css中經常會做重複同樣的事(撰寫重複的class名稱)，尤其開發中大型網站時消耗在這上面的時間會更明顯，因此使用預處理器處理css可以有效減少重複程式碼的編寫時間。</p>
                 <p>目前主流預處理器有LESS、SASS、SCSS三種，以下以SCSS做介紹</p>
                 <ul class="mg_top10 flex wrap left icon_check">
                     <p class="mark">使用SCSS的好處</p>
                     <li>省下大量重複的class名稱，巢狀結構下優勢體現越大</li>
-                    <li>可以透過變數的方式統一使用樣式/修改</li>
+                    <li>建立變數統一樣式或透過變數計算得出所需要的結果值</li>
                     <li>可以使用函式的方式透過呼叫給予參數後計算得出回傳值</li>
                     <li>使用模組化設計，提升資源使用效率以及方便管理</li>
                     <li>下載他人的SCSS工具包就可以快速使用他人寫好的功能</li>
@@ -270,9 +274,9 @@
                     <li>需要額外的時間成本學習，初次面對程式的人較難以精通</li>
                     <li>沒了</li>
                 </ul>
-                <p class="mg_top10">看起來使用scss幾乎百利而無一害對吧?在開始編寫SCSS前除了建議安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>之外，還要安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass" target="new">Live Sass Compiler</a>，後者可以協助我們將scss轉譯成css。</p>
-                <p>新增一個名為style.scss檔案後使用vs code右下角Watch Sass按鈕執行Live Sass Compiler功能，之後只要在style.scss底下編寫相關語法儲存時就會被自動轉譯成同名.css檔案產出。</p>
-                <p>以下是一個scss轉譯過程影片。</p>
+                <p class="mg_top10">看起來使用scss幾乎百利而無一害對吧?在開始編寫SCSS前除了建議安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>之外，還要安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass" target="new">Live Sass Compiler</a>，後者可以協助我們將scss轉換成.css檔案。</p>
+                <p>新增一個名為style.scss檔案後使用vs code右下角Watch Sass按鈕執行Live Sass Compiler功能，之後只要在style.scss底下編寫相關語法儲存時就會自動轉換並輸出一個同名.css的檔案。</p>
+                <p>以下是一個scss轉換過程影片。</p>
                 <video src="./video/scss.mp4" controls class="video mg_top10"></video>
                 <h3>開始使用SCSS</h3>
                 <p>以下是使用css與scss的比較程式碼</p>
@@ -363,10 +367,10 @@
         }
     }</pre>
                 </li>
-                <p>這邊只是一些初步的變數應用，可以透過其他方式利用變數計算出需要的結果。</p>
+                <p>這邊只是一些初步的變數應用，可以透過其他方式利用變數計算出預期的結果值。</p>
                 </ol>
                 <h3>@extend繼承</h3>
-                <p>在scss中如果有很多重複的樣式可以使用繼承的方式讓scss幫你處理掉，以下是一個簡單的繼承範例。</p>
+                <p>在scss中如果有很多重複的樣式可以使用繼承的方式讓scss幫你處理，以下是一個簡單的繼承範例。</p>
                 <ol>
                     <li>
     <pre>
@@ -401,7 +405,7 @@
                     </li>
                 </ol>
                 <h3>@mixin管理樣式</h3>
-                <p>繼承雖然好用但是如果你有參數的使用需求就可以使用mixin，使用mixin的方式很簡單只要將一包設定檔丟入mixin就可以呼叫他使用，當然也可以呼叫的時候傳入參數，以下是一個使用參數的mixin簡單範例。</p>
+                <p>繼承雖然好用但是如果你有參數使用需求可以改用mixin，使用mixin的方式很簡單只要將一包寫好的樣式丟入mixin就可以呼叫他使用，以下是一個使用參數的mixin簡單範例。</p>
                 <ol>
                     <li>
     <pre>
@@ -437,7 +441,7 @@
         opacity: 1;
     }</pre>
                     </li>
-                    <p>如果有大量相同類似的區塊要用同一種設定那麼我建議你使用extend繼承，而不是mixin，避免造成大量重複的樣式在css檔案上</p>
+                    <p>如果有大量相同類似的區塊要用同一種設定那麼我建議你使用extend繼承，而不是mixin，避免會有大量重複的樣式出現在css檔案上</p>
                     <p>使用mixin時如果有放入參數呼叫時也要帶入參數否則會無法輸出結果</p>
                 </ol>
                 <h3>@function函式</h3>
@@ -463,7 +467,7 @@
         font-size: test2(20) / 2.5+px;
     }</pre>
                     </li>
-                    <p>函式與mixin相似但是函式會回傳一個值因此必須要含有@return，函式可以選擇不傳入參數，但是參數必須要先給預設值，以下是轉譯後的css</p>
+                    <p>函式與mixin相似但是函式會回傳一個值因此必須要含有@return，函式可以選擇不傳入參數，但是參數必須要先給預設值，以下是輸出後的css內容</p>
                     <li>
     <pre>
     .box {
@@ -474,9 +478,9 @@
         font-size: 40px;
     }</pre>
                 </li>
-                <p>透過函式可以做到更多運算得出我們想要的值。</p>
+                <p>以上，透過函式可以做到更多運算得出我們想要的值。</p>
             </ol>
-            <p>以上就是scss介紹，預處理器熟練後可以讓開發的效率會更高也可以避免掉更多無意義時間，更多scss的教學可以參考<a href="https://www.youtube.com/watch?v=mzuKtTuimEE" target="new">SCSS入門觀念引導</a>。</p>
+            <p>預處理器熟練後可以讓開發的效率會更高也可以避免掉更多無意義時間，更多scss的教學可以參考<a href="https://www.youtube.com/watch?v=mzuKtTuimEE" target="new">Alex SCSS入門觀念引導</a>。</p>
         </div>
 
         </section>
@@ -517,7 +521,7 @@
         ;(function(){
             let test_text02 = document.getElementById('test_text02')
             test_text02.style.fontSize = '30px'
-            test_text02.style.color = 'cyan'
+            test_text02.style.color = 'rgb(0, 255, 255)'
         })()
     </script>
     

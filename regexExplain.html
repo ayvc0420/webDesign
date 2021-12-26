@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <link rel="shortcut icon" href="./images/logoIcon.webp">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="title" content="Regex介紹"/>
+    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/regexExplain.html"/>
+    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/regexExplain.html"/>
+    <title>Regex介紹</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
 </head>
@@ -97,11 +101,11 @@
                     <li>^[\u0800-\u4e00]+$</li>
                     <p>純日文字元</p>
                     <li>.*google\.com.*</li>
-                    <p>只要有google.com的字元就把整段全選</p>
+                    <p>只要含有google.com的字元就把整段全選</p>
                     <li>^[0-9]{10}$</li>
                     <p>整段字元長度為10，且全部必須為數字</p>
                 </ol>
-                <p>以上是最基本的正規表達式應用，以下是透過JS使用Regex條件判斷input內輸入的值是否為數字或英文</p>
+                <p>以上是最基本的正規表達式應用，以下是透過JS使用Regex條件判斷input內輸入的值是否為數字或英文，結果為true/false。</p>
                 <ol>
                     <li>
     <pre>
@@ -134,8 +138,8 @@
         
         <article class="end_text">
             <h2>小結</h2>
-            <p>Regex不僅進行大量資料處裡非常很用也能做條件判斷，最常見的電子信箱驗證、大小寫等都是用Regex規則去判斷。</p>
-            <p>學習Regex時推薦使用<a href="https://regex101.com/" target="new">Regex101</a>網站，可以快速了解當前規則選取的字元是哪些。</p>
+            <p>大量資料需要轉換成陣列時使用Regex作為分割條件是非常好用的功能，同時也能做條件判斷，最常見的電子信箱驗證、大小寫限制等都是用Regex規則去判斷。</p>
+            <p>學習Regex時推薦使用<a href="https://regex101.com/" target="new">Regex101</a>網站，可以快速了解當前輸入的規則是選取哪些字元。</p>
         </article>
 
 

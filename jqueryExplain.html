@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <link rel="shortcut icon" href="./images/logoIcon.webp">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="title" content="jQuery介紹"/>
+    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/jqueryExplain.html"/>
+    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/jqueryExplain.html"/>
+    <title>jQuery介紹</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
+    <style>
+        .jq2_class{
+            color: red;
+        }
+    </style>
+    
 </head>
 <body>
     
@@ -87,37 +97,140 @@
                 <h3>常見疑問</h3>
                 <div class="problem">
                     <p class="q">jQuery正在被社群棄用那我為什麼要學它?</p>
-                    <p class="a">即使現今社群在排斥使用它，但jQuery的占比率仍然是遠遠超過其他三大框架加起來(截止2021年底)，原因就是上手相對容易。</p>
+                    <p class="a">即使現今社群在排斥使用它，但jQuery的占比率仍然是遠遠超過其他三大框架加起來(截止2021年底)，原因就是上手相對容易，且使用框架必須要有一些先決條件。</p>
                     <p class="q">你說jQuery選取多方便到底是多方便?</p>
-                    <p class="a">以常見的針對DOM進行修改文字內容用JS寫會是:<br>document.getElementById('news').textContent = 'JS edit'<br>用jQuery寫則會是:<br>$('#news').text('jQ edit')。</p>
+                    <p class="a">以常見的針對DOM進行修改文字內容兩者的差異會是</p>
+    <pre>
+        document.getElementById('news').textContent = 'JS edit' //JS
+        $('#news').text('jQ edit') //jQ</pre> 
+                    <p class="a2">是否感受到明顯的長度差距?這就是jQuery的口號「寫的少，做的多」。</p>
                     <p class="q">學也是學，那我為什麼不直接使用ARV其中一種框架就好?</p>
                     <p class="a">針對這點如果還沒有看過本站的<a href="./vueExplain.html" target="new">Vue介紹</a>的話建議先看一下，沒有萬用的工具只有在對應場景用出符合的工具才會獲得最大效益，ARV三種框架在越大型的網站優勢體現越大，而jQ並非不能做大型網站只是相較之下明顯劣勢，無論jQ的選取有多方便畢竟都還是以針對DOM進行操作的概念去執行無法與資料驅動框架比較。</p>
                     <p class="q">那我如果想快點學到實用技能例如飛來飛去的動畫，應該選哪個學?</p>
-                    <p class="a">如果是初學程式的話我會建議你了解JS變數與陣列等基本概念開始學jQuery，否則如果寫出</p>
+                    <p class="a">如果是初學程式的話我會建議你了解JS變數與陣列等基本概念開始學jQuery，否則如果寫出以下</p>
     <pre>
     let n = [10,20,30,40,50]
     let n1 = [...n]
     $('#news').text(n1)</pre>
-                    <p class="a2">這種程式要在IE執行，我只能說jQ畢竟還是程式語言而不是自然語言...。</p>
+                    <p class="a2">這種程式碼要在IE執行，我只能說jQ畢竟還是程式語言而不是自然語言轉換程度還是有限...。</p>
                     <p class="q">所以說了這麼多你到底是主要寫什麼?</p>
-                    <p class="a">作為一個邁向優良工程師之路努力的菜鳥無論是JS或jQ我都會寫，差別度只是在熟不熟悉而已，而如果要成為前端工程師那我建議你還是主要走向JS，早學晚學都要學後面還有nodeJS、框架等等...，好吧，我承認我主要是寫JS，寧願燒腦不支援IE我也不寫jQ。</p>
+                    <p class="a">作為一個邁向優良工程師之路努力的菜鳥無論是JS或jQ我都會寫，差別度只是在熟不熟悉而已，而如果要成為前端工程師那我建議你還是主要走向JS，早學晚學都要學後面還有nodeJS、框架等等會接觸...，好吧，我承認我主要是寫JS，寧願燒腦不支援IE我也不寫jQ，不是因為jQ有多爛而是習慣JS之後就會習慣開始用原生的方式去撰寫。</p>
 
                 </div>
 
-                <h3>開始寫jQuery</h3>
-                <p>首先若不是特殊需求如支援IE6、7舊版瀏覽器建議使用最新的壓縮版本(2021年底為v3.6.0)，以下皆使用官網提供的CDN方式載入。</p>
+                <h3 id="jQsrc">開始寫jQuery</h3>
+                <p><span class="mark">使用jQuery之前必須先導入jQ檔案才可以使用</span>，若不是特殊需求如支援IE舊版瀏覽器建議使用最新的壓縮版本(2021年底為v3.6.0)，以下皆以使用官網提供的CDN方式載入。</p>
                 <ol>
                     <li>
     <pre>
     &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js">&lt;/script></pre>
                     </li>
-                    <p>如果是開發產品一律強烈建議將js檔載入到本地端進行引用，避免CDN發生意外問題導致功能異常造成不必要損失。</p>
+                    <p>如果是開發產品無論是否為jQ一律強烈建議將JS檔載入到本地端進行引用，避免CDN發生意外無法連線導致功能異常造成不必要損失。</p>
                 </ol>
-
-
+                <h3>起手式</h3>
+                <p>對於剛入門學習程式的人經常會犯一種錯就是程式執行的位置在DOM尚未產生前，也就是當對象還沒載入完畢功能就已經觸發這樣產生的選取對象會是不預期的結果，因此jQuery官方提供一種封裝方式，只要在最外層加上這一段程式碼就可以確保在執行jQ的時候已經先載入完畢HTML的DOM了。</p>
+                <ol>
+                    <li>
+    <pre>
+    $(function(){
+        //程式片段
+    })</pre>
+                    </li>
+                    <p>使用jQ之前要知道jQ有很多語法都是透過包裝後改良的簡潔語法，使用上會與JS較不相同，關於ready事件可以參<a href="https://learn.jquery.com/using-jquery-core/document-ready/" target="new">jQuery官方說明</a></p>
+                </ol>
+                <h3>選取器與應用</h3>
+                <p>jQ容易上手的原因很大一部分在於選取器簡單，在JS動作都是選取對象>觸發時機>執行功能，三種流程，jQ自然也不例外，使用「$」這個萬用選取器符號可以直接幫我們選到想要選取的對象，以下應用程式碼省略載入<a href="#jQsrc">JQ檔案</a></p>
+                <ol>
+                    <p>常見的監聽DOM觸發點擊事件時執行功能</p>
+                    <li>
+    <pre>
+    $('#id').on('click',function(){
+        $('#id').text('this is id')
+    })</pre>
+                    </li>
+                    當然，也支援ES6的箭頭函式寫法
+                    <li>
+    <pre>
+    $('.class').on('click',()=>{
+        $('.class').text('this is class.')
+    })</pre>
+                    </li>
+                    <p>除非明確知道不會使用this功能否則建議使用傳統function寫法，也有一些jQ針對常用功能進行封裝的效果可以使用</p>
+                    <li>
+    <pre>
+    &lt;div class="jq1">
+        &lt;p>隱藏效果的文字&lt;/p>
+    &lt;/div>
+    &lt;button class="jq1_btn">查看效果&lt;/button>
+    &lt;script>
+        $('.jq1_btn').on('click',function(){
+            $('.jq1').toggle(500)
+        })
+    &lt;/script></pre>
+                    </li>
+                    <p>toggle可以偵測對象是否為隱藏狀態，如果是則顯示，反之則隱藏，()內可以放入時間參數設定切換改為動畫產生單位是毫秒</p>
+                    <div class="effect_view">
+                        <div class="jq1">
+                            <p>隱藏效果的文字</p>
+                        </div>
+                        <button class="jq1_btn">查看效果</button>
+                    </div>
+                    <p>也可以透過jQ控制css屬性樣式</p>
+                    <li>
+    <pre>
+    &lt;style>
+        .jq2_class{
+            color: red;
+        }
+    &lt;/style>
+    &lt;div class="jq2">
+        &lt;p>新增/移除class的文字&lt;/p>
+    &lt;/div>
+    &lt;button class="jq2_btn">查看效果&lt;/button>
+    &lt;script>
+    $('.jq2_btn').on('click',function(){
+        $('.jq2').toggleClass('jq2_class')
+    })
+    &lt;/script></pre>
+                    </li>
+                    <p>在這邊使用class的原因是因為不考慮css權重時css處理樣式使用的資源會低於JS，且使用class可以觸發多個不同效果只要在一個class內預先寫好樣式即可</p>
+                    <div class="effect_view">
+                        <div class="jq2">
+                            <p>新增/移除class的文字</p>
+                        </div>
+                        <button class="jq2_btn">查看效果</button>
+                    </div>
+                    <p>也可以透過選取器與JS的功能進行操作</p>
+                    <li>
+    <pre>
+    &lt;div class="jq3"> 目標是我 我離網頁最頂端的距離有&lt;span style="color:rgb(255,0,0)">&lt;/span>px&lt;/div>
+    &lt;button class="jq3_btn">查看效果&lt;/button>
+    &lt;srcipt>
+    $('.jq3_btn').on('click',function(){
+        $('.jq3').children('span').text($('.jq3').offset().top)
+    })
+    &lt;/script></pre>
+                    </li>
+                    <p>獲取元素離頂的距離之後可以用於動畫觸發條件判斷，偵測使用者當前在網頁是處於哪一個範圍內，在有動畫的需求上效果非常實用</p>
+                    <div class="effect_view">
+                        <div class="jq3"> 目標是我 我離網頁最頂端的距離有<span style="color:rgb(255,0,0)"> </span>px</div>
+                        <button class="jq3_btn">查看效果</button>
+                    </div>
+                </ol>
+                <p>以上是一些在jQ常見的應用功能，更多還有動畫效果animation的API可以參考<a href="https://api.jquery.com/animate/" target="new">官方文件</a>，在學習一個框架或函式庫的時候直接查看文件說明是最好的學習方式之一。</p>
             </div>
 
         </section>
+
+        <article class="end_text">
+            <h2>小結</h2>
+            <p>實際應用過jQuery之後應該都可以理解「用的少，做的多」這句口號了吧?</p>
+            <p>在應用上jQuery與JS有許多相似的地方，如果是直接學jQ的話在使用JS上可能會覺得有不順手的感覺是很正常的，但如果已經對JS有基本了解那學習jQ的速度會非常的快且觀念也會較正確，因此才會推薦先JS再jQ。</p>
+            <p>哪怕社群都開始在棄用jQuery但使用他不要覺得是件可恥的事情，應該要想想他到底可以帶給你什麼效益才是重點，針對更多jQuery的學習及觀念講解可以參考:<a href="https://www.youtube.com/watch?v=xeIbgAdEcUA" target="new">Alex jQ從入門到認識</a></p>
+            <h3>jQ見山是山</h3>
+            <video src="./video/alexAlljs.mp4" controls class="radius"></video>
+            <p>影片出處:<a href="https://www.youtube.com/watch?v=xeIbgAdEcUA&t=4400s" target="new">這裡</a></p>
+        </article>
 
 
     </main>
@@ -146,11 +259,24 @@
 
 
     <script src="./js/vue_2.6.14.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
     <script type="module">
         import './js/navVue.js'
         import './js/bannerVue.js'
         import './js/layout.js'
     </script>
-
+    <script>
+    $(function(){
+        $('.jq1_btn').on('click',function(){
+            $('.jq1').toggle(500)
+        })
+        $('.jq2_btn').on('click',function(){
+            $('.jq2').toggleClass('jq2_class')
+        })
+        $('.jq3_btn').on('click',function(){
+            $('.jq3').children('span').text($('.jq3').offset().top)
+        })
+    })
+    </script>
 </body>
 </html>

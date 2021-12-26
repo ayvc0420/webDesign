@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <link rel="shortcut icon" href="./images/jsLogo.webp">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="JavaScript介紹"/>
+    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/jsExplain.html"/>
+    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/jsExplain.html"/>
     <title>JavaScript介紹</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
@@ -64,35 +68,33 @@
                 <h2>前言</h2>
                 <p>JavaScript是一個在WEB上執行的程式語言，與HTML/CSS不同的是，它是一個真正的程式語言，因此你如果開始學習JS的話那麼恭喜你，你現在已經成為一位真正的網頁製作人員。</p>
                 <p>網站設立的初衷是將資訊呈現給使用者查看，現今網站透過各種JS效果增強與使用者體驗互動，如果沒有JS的網站我們稱為靜態網站。</p>
-                <p>在開始撰寫JavaScript前，建議先安裝vs code套件<a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="new">JavaScript (ES6) </a>在使用時會提示語法幫助撰寫速度，但仍然強烈建議須將完整名字了解並記住。</p>
+                <p>在開始撰寫JavaScript前，建議先安裝vs code套件<a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="new">JavaScript (ES6) </a>在使用時會提示語法幫助學習及提升撰寫速度，但仍然強烈建議須將完整名字了解並記住。</p>
             </header>
 
             <div class="code">
                 <h3>JavaScript使用說明</h3>
-                <p>JS的使用方式有在script標籤內直接使用、src導入的方式導入JS檔案使用、import、export的方式導入，早期網站使用src時會將位置放在head標籤內但隨著網頁技術進步，需要的JS檔案容量與日俱增進而影響載入時間因此將位置改至/body標籤前可以優先載入文字與畫面再載入JS功能，在進行變數或函式命名時建議都以駝峰式命名為主，以下將分成多個單元對JS進行簡單介紹。</p>
+                <p>JS的使用方式有在script標籤內直接使用、src導入的方式導入JS檔案使用、import、export模組化的方式導入，早期網站使用src時會將位置放在head標籤內但隨著網頁技術進步，需要的JS檔案容量與日俱增進而影響載入時間因此將位置改至/body標籤前可以優先載入文字與畫面再載入JS功能，在進行變數或函式命名時建議都以駝峰式命名為主，以下將分成多個單元對JS進行簡單介紹。</p>
                     <h3>console</h3>
                 <ol>
                     <li>
     <pre>
-    &lt;script>
-        let a = 10
-        console.log(a)
-    &lt;/script></pre>
+    let a = 10
+    console.log(a)</pre>
                     </li>
                 </ol>
                 <p>在開始寫JS前必須先了解瀏覽器中的開發人員工具(F12)console，在JS中使用console.log()功能console面板會顯示對象內的值或執行運算結果，是一個非常實用的功能，在實務上可以透過此方式得知變數當下的值或是有哪些參數可以使用。</p>
                 <h3>變數宣告</h3>
                 <ol>
-                    <li>var</li>
-                    <p>作用域為全域可以被重複宣告，在錯誤的觀念使用上容易造成全域變數汙染，支援ES6以上的網站強烈建議改用let</p>
-                    <li>let</li>
-                    <p>作用域為區域在同一個作用域內不能被重複宣告，宣告的變數只能在作用域內產生作用</p>
-                    <li>const</li>
-                    <p>又稱常數與let類似，宣告時必須賦予型態或值，且無法透過直接修改的方式對值進行修改</p>
+                    <li>var a = 10</li>
+                    <p>宣告a變數將10這個數字放入，var作用域為全域且可以被重複宣告，在錯誤的觀念下容易造成全域變數汙染，支援ES6以上的網站強烈建議改用let</p>
+                    <li>let b = '10'</li>
+                    <p>宣告b變數將10這個字串放入，let作用域為區域在同一個作用域內不能被重複宣告，宣告的變數只能在作用域內產生作用，離開則失效</p>
+                    <li>const c = true</li>
+                    <p>宣告c變數將true這個布林值放入，const又稱常數，宣告時必須賦予型態或值，且無法透過直接修改的方式對值進行修改</p>
                 </ol>
-                <p>雖然JS接受先使用變數再宣告，但這種操作會容易汙染全域變數，一般而言宣告都會放在程式的最頂端。</p>
+                <p>雖然JS接受先使用變數再宣告，但這種操作會容易汙染全域變數，一般而言宣告都會放在程式的最頂端容易查看內容及解決程式執行順序的問題。</p>
                 <h3>作用域</h3>
-                <p>在最外層的區域稱為全域，在{}大括號內的區域稱為區域，若是在<span class="mark">區域內使用不存在的變數則會從上面外層</span>尋找，在進行專案中若非必要盡量在區域變數內宣告及使用變數避免全域汙染導致計算結果與期望值不同，試著將以下的let改成var後再console面板看看結果!</p>
+                <p>在最外層的區域稱為全域，在{}大括號內的區域稱為區域，若是在<span class="mark">區域內使用不存在的變數則會從上面外層</span>尋找，在開發專案時若非必要盡量在區域變數內宣告及使用變數避免全域汙染導致計算結果與期望值不同，試著將以下的let改成var後再console面板看看結果!</p>
                 <ol>
                     <li>
     <pre>
@@ -105,10 +107,10 @@
         console.log('外',a)
     &lt;/script></pre>
                 </li>
-                <p>透過上述範例可得知let在不同的作用域不會互相干擾，而var則會，對於入門的初學者或許可能有些難以理解但是作用域引起的BUG會隨著專案的增大而更容易出現，對於作用域的認知一定要理解原理</p>
+                <p>透過上述範例可得知let在不同的作用域不會互相干擾，而var則會，對於入門的初學者或許可能有些難以理解但是作用域引起的BUG會隨著專案的增大而更容易出現，對於作用域的認知一定要詳細理解</p>
             </ol>
             <h3>陣列與物件</h3>
-            <p>JS中有兩個非常重要的型態就是陣列與物件，陣列用來儲存多筆資料陣列的位置稱為索引值<span class="mark">索引值的起始值是0而不是1</span>，物件是一種使用自訂名稱紀錄內容或function函式等的資料型態，兩者可以合併使用，試著將以下範例的console做更改。</p>
+            <p>JS中有兩個非常重要的型態就是陣列與物件，陣列用來儲存多筆資料而陣列的位置稱為索引值<span class="mark">索引值的起始值是0而不是1</span>，物件是一種使用自訂名稱紀錄內容或function函式等的資料型態，兩者可以合併使用，試著自行將以下程式碼進行做更改。</p>
             <ol>
                 <li>
     <pre>
@@ -170,7 +172,7 @@
                 <p>以上是最常見的五種型態，針對<span class="mark">無法確認型態為何的情況下可以使用typeof()查看型態</span>，另外兩種Symbol、Bigint可以參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Data_structures" target="new">MDN 資料型態</a>，部分參數在使用上須特別注意如數字型態的0在執行布林轉換時雖然本身是一個存在的字元但仍會被轉換成false。</p>
                 <p>JS中使用=是將右邊的值賦予至左邊稱為傳值，但對象為物件與陣列時JS會採用傳址的方式將值賦予，由於是傳址的方式改動其中一方都會影響雙方，針對傳址傳值的部分可以參考影片<a href="https://www.youtube.com/watch?v=sxe-oahUARI&t=3205s" target="new">Alex 傳值傳址詳細解說</a>，針對純字串的物件資料進行深拷貝可以參考JSON.parse()與JSON.stringify()的功能。</p>
                 <h3>function函式</h3>
-                <p>在JS中函式是一個非常泛用的程式碼執行片段區塊，在JS幾乎每個動作執行都會透過函式進行處理，以下是常見的函式宣告方式。</p>
+                <p>在JS中函式是一個非常泛用的程式碼執行片段區塊，在JS幾乎每個執行動作都是透過函式進行處理，以下是常見的函式宣告方式。</p>
                 <ol>
                     <li>
     <pre>
@@ -209,7 +211,7 @@
                 <p>以下將在JS中經常會用到的函式功能做簡單介紹，某些功能在不同瀏覽器中可能無法使用，建議使用前先參考<a href="https://caniuse.com/" target="new">can i use</a>查看支援版本。</p>
                 <ol>
                     <li>target.addEventListener</li>
-                    <p>對象為DOM元素，執行監聽，參數有click(點擊)、mousemove(移動)、resize(調整瀏覽器大小)等等，更詳細參數參考<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="new">MDN 監聽器說明</a></p>
+                    <p>針對DOM元素進行監聽，參數有click(點擊)、mousemove(移動)、resize(調整瀏覽器大小)等等，更詳細參數參考<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="new">MDN 監聽器說明</a></p>
                     <li>target.forEach</li>
                     <p>與for迴圈相似但無法透過break跳出迴圈，forEach的停止條件為對象的length長度，在對陣列資料進行處理時非常好用，forEach有三個參數分別為當下內容、編號、對象本身</p>
                     <li>target.map</li>
@@ -260,7 +262,7 @@
                     <p>獲取dom當前的css屬性，包含css給予的屬性，與target.style獲取屬性不同的是後者只會獲取element.style的屬性，如果沒有對標籤直接下style或在JS中使用element.style的方式控制屬性的話會無法取得值</p>
                     <p><img src="./images/getCss.webp" alt="getComputedStyle與style 比較差別圖片" class="max_w400"></p>
                 </ol>
-                <p>以上只針對功能做說明，詳細使用方式參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects" target="new">MDN 內建物件說明</a>，除了以上功能外還有非常多功能/參數這邊未提及如動態參數this、同步與非同步ajax、建構函式class，這些使用方式無法用三言兩語帶過，建議透過各類影片如<a href="https://www.youtube.com/watch?v=1pYtVwIAvhY" target="new">影片1</a>、<a href="https://www.youtube.com/watch?v=_vFuDQ_6Xt8" target="new">影片2</a>以及參考MDN文件。</p>
+                <p>以上只針對功能做說明，詳細使用方式參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects" target="new">MDN 內建物件說明</a>，除了以上功能外還有非常多功能/參數這邊未提及如動態參數this、同步與非同步ajax、建構函式class，這些使用方式無法用三言兩語帶過，建議透過各類影片如<a href="https://www.youtube.com/watch?v=1pYtVwIAvhY" target="new">影片1</a>、<a href="https://www.youtube.com/watch?v=_vFuDQ_6Xt8" target="new">影片2</a>以及參考對應的MDN文件。</p>
                 <p>如果你是第一次接觸網頁技術那麼你的學習路線圖應該為:HTML>CSS>JS>AJAX技術>node管理>前端框架，JS學習的終點雖然是永無止盡的，但是JS的熱門程度卻是直線上升。</p>
             </div>
             
@@ -275,7 +277,7 @@
             <p>針對更多JavaScript影片可以參考<a href="https://www.youtube.com/channel/UCEL8871qFEakpqYpwBSjHNA" target="new">Alex 宅幹嘛頻道</a>，有數百部前端影片可以學習。</p>
             <h3>JS很簡單阿</h3>
             <video src="./video/alexJs.mp4" controls class="radius"></video>
-            <p>影片出處:<a href="https://www.youtube.com/watch?v=Opw1XH2eGb4" target="new">這裡</a></p>
+            <p>影片出處:<a href="https://www.youtube.com/watch?v=Opw1XH2eGb4&t=1445s" target="new">這裡</a></p>
         </article>
 
 
