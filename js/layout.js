@@ -114,6 +114,14 @@
     //     }
     // }
 
-    
+    let gitIcon = 0;
+    document.querySelector('.right>.footer_img').addEventListener('click',function(){
+    // document.getElementsByClassName('right')[0].addEventListener('click',function(){
+        gitIcon++
+        
+        if(gitIcon >= 10){
+            alert('不要再點了，我只是一個GitHub的圖示')
+        }
+    })
 
 })()
