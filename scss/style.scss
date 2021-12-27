@@ -453,6 +453,7 @@ ul.disc li{
     }
     video.radius{
         border-radius: 8px;
+        width: 100%;
     }
 }
 
@@ -593,13 +594,21 @@ footer{
     }
     footer{
         .left{
-            position: fixed;
-            left: -200%;
-            bottom: 10px;
-            display: block;
-            bottom: 60px;
-            transition: left .3s;
+            // position: fixed;
+            // left: -200%;
+            // bottom: 10px;
+            // display: block;
+            // bottom: 60px;
+            // transition: left .3s;
             svg{
+                /**/
+                position: fixed;
+                left: -200%;
+                bottom: 10px;
+                display: block;
+                bottom: 60px;
+                transition: left .3s;
+                /**/
                 color: rgb(255, 246, 221);
                 overflow: hidden;
                 background-color: rgb(150, 100, 0);

@@ -584,6 +584,7 @@ ul.disc li {
 
 .end_text video.radius {
   border-radius: 8px;
+  width: 100%;
 }
 
 footer {
@@ -748,7 +749,8 @@ footer .right {
         -ms-flex-order: -1;
             order: -1;
   }
-  footer .left {
+  footer .left svg {
+    /**/
     position: fixed;
     left: -200%;
     bottom: 10px;
@@ -756,8 +758,7 @@ footer .right {
     bottom: 60px;
     -webkit-transition: left .3s;
     transition: left .3s;
-  }
-  footer .left svg {
+    /**/
     color: #fff6dd;
     overflow: hidden;
     background-color: #966400;

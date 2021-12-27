@@ -76,7 +76,7 @@
 
 
     const goTop = document.getElementById('goTop')
-    const footerLeft = document.querySelector('footer>.left')
+    const footerLeft = document.querySelector('.left svg')
     goTop.addEventListener('click',goUp)
 
     function goUp(){
