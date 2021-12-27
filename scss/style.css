@@ -60,9 +60,12 @@ body.fixed_nav > nav {
 
 .nav_menu > li ul {
   position: absolute;
-  display: none;
   background: linear-gradient(50deg, #f0b000, #f0cc00);
   width: 200px;
+  height: 0px;
+  overflow: hidden;
+  -webkit-transition: opacity .7s , height .7s;
+  transition: opacity .7s , height .7s;
 }
 
 .nav_menu > li ul a {
@@ -83,7 +86,8 @@ body.fixed_nav > nav {
 }
 
 .nav_menu > li:hover ul {
-  display: block;
+  opacity: 1;
+  height: 420px;
 }
 
 .nav_menu > li:not(.menu5) > ul {
@@ -752,6 +756,12 @@ footer .right {
     bottom: 60px;
     -webkit-transition: left .3s;
     transition: left .3s;
+  }
+  footer .left svg {
+    color: #fff6dd;
+    overflow: hidden;
+    background-color: #966400;
+    border-radius: 50%;
   }
   footer .right {
     right: 20px;
