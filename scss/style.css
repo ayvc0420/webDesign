@@ -257,11 +257,11 @@ main {
 }
 
 .banner > .banner_left {
-  left: 20px;
+  left: 40px;
 }
 
 .banner > .banner_right {
-  right: 20px;
+  right: 40px;
 }
 
 .mg_top10 {
@@ -585,6 +585,7 @@ ul.disc li {
 .end_text video.radius {
   border-radius: 8px;
   width: 100%;
+  max-width: 400px;
 }
 
 footer {

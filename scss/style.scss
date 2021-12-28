@@ -191,10 +191,10 @@ main{
         animation: bannerAni ease-in .3s
     }
     >.banner_left{
-        left: 20px;
+        left: 40px;
     }
     >.banner_right{
-        right: 20px;
+        right: 40px;
     }
 }
 
@@ -454,6 +454,7 @@ ul.disc li{
     video.radius{
         border-radius: 8px;
         width: 100%;
+        max-width: 400px;
     }
 }
 
