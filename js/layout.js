@@ -15,7 +15,7 @@
     
     // 手機板選單內容
     const menu5 = document.querySelector('.mob_menu>.menu5')
-    const menu5more = document.querySelector('.menu5_more')
+    const menu5mores = document.querySelectorAll('.menu5_more>li>a')
     const mobLis = document.querySelectorAll('.mob_menu>li')
 
     menuLis.forEach(item=>{
@@ -44,12 +44,23 @@
     
     menu5.addEventListener('click',function(){
         mobLis.forEach(item=>item.style.display = 'none')
-        menu5more.style.left = '0%'
+        let leftSec = 100
+        menu5mores.forEach(item=>{
+            console.log(item)
+            setTimeout(()=>{
+                item.style.left = '0px'
+            },leftSec)
+            leftSec+=70
+        })
     })
 
     touchMenu.addEventListener('click',function(){
         document.querySelectorAll('.mob_menu>li').forEach(item=>item.style.display = 'flex')
-        menu5more.style.left = '-200%'
+        menu5mores.forEach(item=>{
+            setTimeout(()=>{
+                item.style.left = '-300%'
+            },30)
+        })
         const svgState = window.getComputedStyle(svg1,null).opacity
         touchMenu.style.borderColor = 'rgb(255,255,255)'
         if(svgState === '1'){
