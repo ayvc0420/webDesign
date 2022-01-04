@@ -67,14 +67,175 @@
 
             <header class="header">
                 <h2>前言</h2>
-                <p>內容還沒誕生!! 再等我一段時間</p>
+                <p>AJAX是一種非同步處理技術，最大的特色就是可以讓使用者不重新整理頁面也能獲取新資料，著名使用AJAX的應用有Gmail、Google Map等，AJAX不是一種新語言而是透過JavaScript執行的一種技術。</p>
+                <p>使用AJAX不僅可以直接獲取伺服器的資料也能帶參數讓後端進行判斷回應特定資料，目前主流前端的資料格式通常為JSON，如果對JSON不熟悉可以參考<a href="https://zh.wikipedia.org/wiki/JSON" target="new">JSON維基百科</a></p>
             </header>
 
-            <article>
-
-            </article>
+            <div class="code">
+                <h3>AJAX方式</h3>
+                <p>常見的AJAX方式有XHR(XMLHttpRequest)、jQuery AJAX、fetch、axios的方式，以下透過簡易表格比較個別優缺點。</p>
+                <table class="explain bg1">
+                    <thead>
+                        <tr>
+                            <th colspan="4">支援度(由低到高)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>fetch</td>
+                            <td>axios</td>
+                            <td>$.ajax</td>
+                            <td>XHR</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="explain bg2">
+                    <thead>
+                        <tr>
+                            <th colspan="4">使用複雜度(由易到難)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>axios</td>
+                            <td>$.ajax</td>
+                            <td>fetch</td>
+                            <td>XHR</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="explain bg1">
+                    <thead>
+                        <tr>
+                            <th colspan="4">初次學習推薦度(由低到高)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>axios</td>
+                            <td>fetch</td>
+                            <td>$.ajax</td>
+                            <td>XHR</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>XHR最早出現在IE5的瀏覽器，無論是jQuery的$.ajax或axios套件都是將XHR進行包裝後簡化使用方式，而fetch是JS ES6出現的原生語法目前及未來皆完全不支援IE瀏覽器。</p>
+                <p>一般而言初學者建議優先了解AJAX的運作後直接使用axios套件即可，XHR、$.ajax只需要了解就算不會使用也沒問題。</p>
+                <h3>AJAX使用方式</h3>
+                <p>以下以獲取json資料的方式進行介紹，由於post、delete、put/patch需要搭配服務器這裡暫時不介紹，自行練習時推薦使用<a href="https://github.com/typicode/json-server" target="new">JSON-server</a>可以直接將json檔案建立為一個API server，進行CRUD(讀增刪更)操作。</p>
+                <ol>
+                    <p>XHR</p>
+                    <li>
+    <pre>
+    &lt;script>
+    var xhrReq = new XMLHttpRequest() //建立XHR物件
+    var url = '../data.json'  //將路徑存放在變數內
+    xhrReq.open('get',url,true)  //請求方式為get 網址 同步與非同步設定(預設為true非同步 可不填)
+    xhrReq.send()  //發送資料 由於是get的方式而不是post因此直接空白即可
+    xhrReq.addEventListener('load',function(e){  //監聽完成請求後觸發
+        console.log('xhrReq',xhrReq) //查看請求內容
+        console.log('e',e)  //查看對象參數
+    })
+    &lt;/script></pre>
+                    </li>
+                    <p>axios</p>
+                    <li>
+    <pre>
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js">&lt;/script>
+    &lt;script>
+    let url = '../data.json'  //將路徑存放在變數內
+    axios(url).then(function (req){  //axios預設為get方式 成功獲取將參數命名為req做後續使用
+        console.log(req)  //查看請求內容
+    }).catch(function(err){  //當請求失敗時觸發(如路徑錯誤/請求方式錯誤) 將錯誤參數命名為err
+        console.log(err,'err')  //查看錯誤參數
+    })
+    &lt;/script></pre>
+                    </li>
+                    <p>fetch(async/await寫法)</p>
+                    <li>
+    <pre>
+    &lt;script>
+    ~async function(){  //直接執行匿名async函式
+        const url = '../data.json'  //將路徑存放在變數內
+        let data;  //宣告變數預計放入請求資料
+        try{  //try內一般不建議放入過多處理請求
+            data = await fetch(url)  //await讓這段請求執行完後再往下執行 預設為get方式
+        }catch{  //當請求錯誤時會觸發
+            console.log('err')  //跳出錯誤訊息
+        }
+        console.log(data)  //查看獲取內容
+        data.json().then(req=>{  //將獲取內容輸出為json後參數命名為req繼續執行
+            console.log(req)  //查看轉為json後的內容
+        })
+    }()
+    &lt;/script></pre>
+                    </li>
+                    <p>$.ajax(jQuery AJAX分為多種方式<a href="https://api.jquery.com/category/ajax/" target="new">點我查看</a>)</p>
+    <li>
+    <pre>
+    &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js">&lt;/script>
+    &lt;script>
+    var url = '../data.json'  //將路徑存放在變數內
+    $.ajax({  //使用$.ajax裡面用參數設定請求方式
+        url:url,  //請求對象(網址)
+        type:'get',  //請求方式預設為get get時可不填
+        dataType:'json',  //請求後得到的資料格式(如text、json)
+        success:function(req){  //成功時執行的函式
+            console.log(req,'req')  //查看內容
+        },
+        error:function(err){  //失敗時執行的函式
+            console.log(err,'err')  //查看內容
+        }
+    })
+    &lt;/script></pre>
+    </li>
+                </ol>
+                <ul class="icon_qu mg_top10">
+                    <p class="mark">使用AJAX需要注意的地方</p>
+                    <li>獲取或執行的資料來源是否可信</li>
+                    <li>進行跨域存取資料時確認CORS是否允許</li>
+                    <li>請求次數是否過於頻繁避免造成伺服端負荷過高</li>
+                    <li>用戶輸入的資料是否含有可執行語法會造成XSS惡意攻擊<a href="https://docs.microsoft.com/zh-tw/aspnet/mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-vb" target="new">參考我</a></li>
+                    <li>進行龐大資料處理時需要更久的等待時間，是否會讓使用者無法等待</li>
+                </ul>
+                <h3>RESTful API</h3>
+                <p>使用API前須先從API文件資料了解如何使用，由於API命名時沒有統一規範因此設計出的API存取方式也可能有所不同，非RESTful API設計的路徑可能會是以下。</p>
+                <ol>
+                    <p>讀取</p>
+                    <li>/apiurl/getData</li>
+                    <p>新增</p>
+                    <li>/apiurl/createData</li>
+                    <p>刪除</p>
+                    <li>/apiurl/deleteData</li>
+                    <p>更新</p>
+                    <li>/apiurl/updateData</li>
+                </ol>
+                <p>而使用RESTful API設計的API會是以下。</p>
+                <ol>
+                    <p>讀取</p>
+                    <li>/apiurl/data</li>
+                    <p>新增</p>
+                    <li>/apiurl/data</li>
+                    <p>刪除</p>
+                    <li>/apiurl/data/id</li>
+                    <p>更新PUT/PATCH</p>
+                    <li>/apiurl/data/id</li>
+                </ol>
+                <p>遵循RESTful風格所設計的API有統一的位置，且必須是無狀態(伺服端不儲存客戶端資料，在請求時會一併發送應有的資訊)，更多可以參考<a href="http://restful.p2hp.com/learn/caching" target="new">REST API</a>、<a href="https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%8E%B0%E5%B1%82%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2" target="new">REST維基百科</a></p>
+<!-- 
+                <p>以上是四種常見的AJAX方式，使用AJAX時需要了解</p> -->
+                <!-- <ul>
+                    <p>支援度(由低到高)</p>
+                    <li class="flex row flex_center fz20">fetch<i class="arrow_right mid mg_right_left10"></i>axios<i class="arrow_right mid mg_right_left10"></i>$.ajax<i class="arrow_right mid mg_right_left10"></i>XHR</li>
+                    <p></p> 
+                </ul> -->
+            </div>
         </section>
 
+        <article class="end_text">
+            <h2>小結</h2>
+            <p>AJAX是前端工程師必備的技能，不僅可以提升使用者體驗也可以有效降低客戶端與伺服端的頻繁交流，但使用上必須確認使用者的輸入內容是否安全以及異步處理機制會讓初學者容易產生困惑。</p>
+        </article>
 
     </main>
 
@@ -98,6 +259,7 @@
             </a>
         </div>
     </footer>
+
 
 
     <script src="./js/vue_2.6.14.js"></script>

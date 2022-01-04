@@ -205,12 +205,19 @@ main{
 .mg_bottom10{
     margin-bottom: 10px;
 }
+.mg_right_left10{
+    margin: 0 10px;
+}
 ul.icon_check li{
     list-style-image: url(../images/check.svg);
     margin-left: 20px;
 }
 ul.icon_x li{
     list-style-image: url(../images/x-lg.svg);
+    margin-left: 20px;
+}
+ul.icon_qu li{
+    list-style-image: url(../images/question-lg.svg);
     margin-left: 20px;
 }
 ul.disc li{
@@ -228,6 +235,39 @@ ul.disc li{
 }
 .w400{
     width: 400px;
+}
+table.explain{
+    width: 600px;
+    max-width: 100%;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 20px;
+    th{
+        border-top: 1px solid rgb(0, 0, 0);
+        border-left: 1px solid rgb(0, 0, 0);
+        border-right: 1px solid rgb(0, 0, 0);
+        padding: 2px 0;
+    }
+    td{
+        border: 1px solid rgb(0, 0, 0);
+        padding: 3px 0;
+    }
+}
+.bg1{
+    background: linear-gradient(45deg,rgb(126, 93, 245),rgb(142, 177, 255));
+}
+.bg2{
+    background: linear-gradient(45deg,rgb(142, 177, 255),rgb(126, 93, 245));
+}
+
+i.mid{
+    vertical-align: middle;
+}
+i.arrow_right::before{
+    content: url(../images/arrow-right.svg);
+}
+.fz20{
+    font-size: 20px;
 }
 .content{
     border: 5px ridge;
@@ -335,6 +375,7 @@ ul.disc li{
             background-color: rgba(255, 255, 255,.2);
         }
         pre{
+            padding: 5px 10px 5px 5px;
             white-space: pre-wrap !important;
             white-space: -moz-pre-wrap !important;
             word-wrap: break-word;
@@ -368,6 +409,9 @@ ul.disc li{
     .flex{
         display: flex;
         flex-direction: column;
+    }
+    .flex.row{
+        flex-direction: row;
     }
     .flex_center{
         align-items: center;
@@ -427,7 +471,7 @@ ul.disc li{
     text-align: center;
     margin-bottom: 30px;
     max-width: 1000px;
-    margin: 10px auto;
+    margin: 10px auto 30px;
     h2{
         color: $titleColor;
         font-size: $text*2;
@@ -633,4 +677,3 @@ footer{
         }
     }
 }
-
