@@ -136,12 +136,12 @@
                     <li>
     <pre>
     &lt;script>
-    var xhrReq = new XMLHttpRequest() //建立XHR物件
+    var xhr = new XMLHttpRequest() //建立XHR物件
     var url = '../data.json'  //將路徑存放在變數內
-    xhrReq.open('get',url,true)  //請求方式為get 網址 同步與非同步設定(預設為true非同步 可不填)
-    xhrReq.send()  //發送資料 由於是get的方式而不是post因此直接空白即可
-    xhrReq.addEventListener('load',function(e){  //監聽完成請求後觸發
-        console.log('xhrReq',xhrReq) //查看請求內容
+    xhr.open('get',url,true)  //請求方式為get 網址 同步與非同步設定(預設為true非同步 可不填)
+    xhr.send()  //發送資料 由於是get的方式而不是post因此直接空白即可
+    xhr.addEventListener('load',function(e){  //監聽完成請求後觸發
+        console.log('xhr',xhr) //查看請求內容
         console.log('e',e)  //查看對象參數
     })
     &lt;/script></pre>
@@ -152,8 +152,8 @@
     &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js">&lt;/script>
     &lt;script>
     let url = '../data.json'  //將路徑存放在變數內
-    axios(url).then(function (req){  //axios預設為get方式 成功獲取將參數命名為req做後續使用
-        console.log(req)  //查看請求內容
+    axios(url).then(function (res){  //axios預設為get方式 成功獲取將參數命名為res做後續使用
+        console.log(res)  //查看請求內容
     }).catch(function(err){  //當請求失敗時觸發(如路徑錯誤/請求方式錯誤) 將錯誤參數命名為err
         console.log(err,'err')  //查看錯誤參數
     })
@@ -172,8 +172,8 @@
             console.log('err')  //跳出錯誤訊息
         }
         console.log(data)  //查看獲取內容
-        data.json().then(req=>{  //將獲取內容輸出為json後參數命名為req繼續執行
-            console.log(req)  //查看轉為json後的內容
+        data.json().then(res=>{  //將獲取內容輸出為json後參數命名為res繼續執行
+            console.log(res)  //查看轉為json後的內容
         })
     }()
     &lt;/script></pre>
@@ -188,8 +188,8 @@
         url:url,  //請求對象(網址)
         type:'get',  //請求方式預設為get get時可不填
         dataType:'json',  //請求後得到的資料格式(如text、json)
-        success:function(req){  //成功時執行的函式
-            console.log(req,'req')  //查看內容
+        success:function(res){  //成功時執行的函式
+            console.log(res,'res')  //查看內容
         },
         error:function(err){  //失敗時執行的函式
             console.log(err,'err')  //查看內容
@@ -198,6 +198,7 @@
     &lt;/script></pre>
     </li>
                 </ol>
+                <p>以上四種是用AJAX向伺服器獲取資料的方法，如果開發環境為ES6時建議使用axios或fetch進行操作，具體使用fetch操作post時可能需要包含body、Content-Type等參數可以參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch" target="new">MDN文件</a>、<a href="https://www.youtube.com/watch?v=qTpw9EKEeqk" target="new">偷米騎巴哥HTTP header解說</a>。</p>
                 <ul class="icon_qu mg_top10">
                     <p class="mark">使用AJAX需要注意的地方</p>
                     <li>獲取或執行的資料來源是否可信</li>
@@ -273,5 +274,6 @@
     </script>
     
     <script src="./js/isIE.js"></script>
+
 </body>
 </html>

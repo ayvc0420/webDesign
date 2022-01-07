@@ -114,7 +114,8 @@ main{
     padding:0 20px;
 }
 .breadcrumbs{
-    max-width: 1400px;
+    width: 1400px;
+    max-width: 80%;
     font-size: 19px;
     margin: 20px auto;
     color: greenyellow;
@@ -366,8 +367,9 @@ i.arrow_right::before{
     ol{
         list-style: decimal;
         font-size: $text;
-        padding: 10px 0;
-        padding-left: 35px;
+        padding: 10px 10px 10px 30px;
+        border-radius: 3px;
+        // padding-left: 35px;
         >li{
             list-style: decimal;
             border-left: 4px solid chartreuse;
@@ -632,6 +634,8 @@ footer{
         }
     }
     .breadcrumbs{
+        margin: 20px 0;
+        line-height: 1.5;
         padding-left: 20px;
     }
     .content{
