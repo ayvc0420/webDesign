@@ -76,7 +76,7 @@ body.fixed_nav{
 
     >li:hover ul{
         opacity: 1;
-        height: 420px;
+        height: 490px;
     }
     // 預計只對menu5寫額外ul區域 但因Vue的for關係導致產生多個ul
     >li:not(.menu5)>ul{
@@ -385,11 +385,22 @@ i.arrow_right::before{
     }
     // 註解
     ol{
-        background-color: cadetblue;
+        background-color: rgb(62, 178, 182);
+        // li文字 pre
+        li{
+            color: rgb(30, 2, 187);
+        }
     }
-    // li文字 pre
-    ol li{
-        color: rgb(30, 2, 187);
+    ol{
+        li:nth-of-type(odd),p:not(.no_p):nth-of-type(odd){
+            background-color: rgba(145, 222, 255, 0.3);
+        }
+        li:nth-of-type(even),p:not(.no_p):nth-of-type(even){
+            background-color: rgba(223, 255, 149, 0.3);
+        }
+        p{
+            padding-left: 7px;
+        }
     }
     // css code內標題文字
     >h5{

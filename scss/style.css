@@ -87,7 +87,7 @@ body.fixed_nav > nav {
 
 .nav_menu > li:hover ul {
   opacity: 1;
-  height: 420px;
+  height: 490px;
 }
 
 .nav_menu > li:not(.menu5) > ul {
@@ -496,11 +496,23 @@ i.arrow_right::before {
 }
 
 .content .code ol {
-  background-color: cadetblue;
+  background-color: #3eb2b6;
 }
 
 .content .code ol li {
   color: #1e02bb;
+}
+
+.content .code ol li:nth-of-type(odd), .content .code ol p:not(.no_p):nth-of-type(odd) {
+  background-color: rgba(145, 222, 255, 0.3);
+}
+
+.content .code ol li:nth-of-type(even), .content .code ol p:not(.no_p):nth-of-type(even) {
+  background-color: rgba(223, 255, 149, 0.3);
+}
+
+.content .code ol p {
+  padding-left: 7px;
 }
 
 .content .code > h5 {

@@ -156,17 +156,19 @@
                     <li>git reflog</li>
                     <p>顯示最近git的指令，包含SHA-1碼、分支操作，用於拯救reset錯誤動作</p>
                     <li>git tag v0.1</li>
-                    <p>將當前所在位置設置一個標籤，標籤紀錄為v0.1，如果要針對commit等對象加入標籤需使用HEAD分離狀態切換，tag建議使用GUI工具</p>
+                    <p>將當前所在位置設置一個標籤，標籤紀錄為v0.1，如果要針對commit等對象加入標籤需使用HEAD分離狀態切換，如果對git不熟時建議使用GUI工具處理tag</p>
                     <li>git merge targetName</li>
                     <p>將目前所在分支與targetName分支進行融合，融合後會創立一個新的commit點，如果同一支檔案內容有衝突需手動排除</p>
                     <li>git rebase</li>
                     <p>合併分支，與merge不同的是rebase會將目前這個分支的紀錄點融合至對象分支，當有衝突時與merge一樣需排查，完畢後使用git rebase --continue完成rebase動作，反悔輸入--abort</p>
                     <li>git reset commit的SHA-1碼(最低輸入4碼以上，建議輸入6碼)</li>
                     <p>回到對應SHA-1碼的記錄點，操作失誤且丟失當前SHA-1碼時使用git reflog救回</p>
-                    <li>git reset --hard HEAD^</li>
-                    <p>把當前分支的動作回到上一步，注意是當前分支不是全部操作</p>
+                    <li>git reset HEAD^</li>
+                    <p>把當前分支的動作回到上一步，注意是當前分支不是全部操作，不會對新增的檔案有動作</p>
                     <li>git reset --hard HEAD~5</li>
-                    <p>把當前分支的動作回到上五步，注意是當前分支不是全部操作</p>
+                    <p>把當前分支的動作回到上五步，注意是當前分支不是全部操作，會將新增的檔案以目標commit為基準進行變化</p>
+                    <li>git cherry-pick 3451e6</li>
+                    <p>將sha-1碼「3451e6」的commit加入至當前分支前，包含commit內異動等，針對已處理的功能整理至主要分支或測試分支非常好用</p>
                 </ol>
                 <p>以上是比較基本的Git指令，其中每個指令後面皆有許多參數，有點複雜嗎?那就實際動作操作看看吧!</p>
                 <p>以下是使用add checkout commit merge基本指令的Git GUI圖型</p>

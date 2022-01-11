@@ -100,7 +100,7 @@
                     <li><pre>
     &lt;style>
         .test_text01{
-                    color: rgb(154, 205, 50);
+                    color: rgb(205, 50, 50);
                     font-size:30px;
         }
     &lt;/style>
@@ -108,7 +108,7 @@
                     後，在任意位置輸入&lt;p class="test_text01">我是第二段測試文字&lt;/p><br>網頁中會呈現
                     <style>
                         .test_text01{
-                            color: rgb(154, 205, 50);
+                            color: rgb(205, 50, 50);
                             font-size:30px;
                         }
                     </style>
@@ -396,7 +396,7 @@
         height: 250px;
     }</pre>
                     </li>
-                    <p>以下是編譯後的結果</p>
+                    以下是編譯後的結果
                     <li>
     <pre>
     .box, .box2 {
@@ -435,7 +435,7 @@
         @include test1(1)
     }</pre>
                     </li>
-                    <p>實際編譯後的css會變成以下</p>
+                    實際編譯後的css會變成以下
                     <li>
     <pre>
     .box {
@@ -450,8 +450,8 @@
         opacity: 1;
     }</pre>
                     </li>
-                    <p>如果有大量相同類似的區塊要用同一種設定那麼我建議你使用extend繼承，而不是mixin，避免會有大量重複的樣式出現在css檔案上</p>
-                    <p>使用mixin時如果有放入參數呼叫時也要帶入參數否則會無法輸出結果</p>
+                    <p class="no_p">如果有大量相同類似的區塊要用同一種設定那麼我建議你使用extend繼承，而不是mixin，避免會有大量重複的樣式出現在css檔案上</p>
+                    <p class="no_p">使用mixin時如果有放入參數呼叫時也要帶入參數否則會無法輸出結果</p>
                 </ol>
                 <h3>@function函式</h3>
                 <p>終於到最後一個功能了，這邊的講解不會太深入避免營造出使用scss是一件麻煩事的誤會，以下是一個簡單的運算函式。</p>
