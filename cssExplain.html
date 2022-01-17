@@ -1,298 +1,483 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head>
-    <link rel="shortcut icon" href="./images/cssLogo.webp">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="CSS介紹"/>
-    <meta property="og:url" content="https://ayvc0420.github.io/webDesign/cssExplain.html"/>
-    <meta name="twitter:url" content="https://ayvc0420.github.io/webDesign/cssExplain.html"/>
-    <title>CSS介紹</title>
-    <link rel="stylesheet" href="scss/reset.css">
-    <link rel="stylesheet" href="scss/style.css">
-    <style>
-        /* div.code>ol:first-of-type{
+	<head>
+		<link rel="shortcut icon" href="./images/cssLogo.webp" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="title" content="CSS介紹" />
+		<meta
+			property="og:url"
+			content="https://ayvc0420.github.io/webDesign/cssExplain.html"
+		/>
+		<meta
+			name="twitter:url"
+			content="https://ayvc0420.github.io/webDesign/cssExplain.html"
+		/>
+		<title>CSS介紹</title>
+		<link rel="stylesheet" href="scss/reset.css" />
+		<link rel="stylesheet" href="scss/style.css" />
+		<style>
+			/* div.code>ol:first-of-type{
             background-color: transparent;
         }
         div.code>ol:first-of-type li{
             color: white;
         } */
-    </style>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CND1PTT94K"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+		</style>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-CND1PTT94K"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
-        gtag('config', 'G-CND1PTT94K');
-    </script>
-</head>
-<body>
-    
-    <nav id="nav" v-cloak>
+			gtag('config', 'G-CND1PTT94K');
+		</script>
+	</head>
+	<body>
+		<nav id="nav" v-cloak>
+			<ul class="nav_menu">
+				<span id="menuTarget"></span>
+				<li v-for="item in navList" :class="item.class">
+					<a :href="item.href" v-html="item.name"></a>
+					<ul>
+						<li v-for="liList in item.ul">
+							<a :href="liList.href">{{liList.name}}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<div id="touchMenu">
+				<svg width="50" height="40" class="svg1" id="svg1">
+					<line
+						x1="10"
+						y1="10"
+						x2="40"
+						y2="10"
+						stroke="black"
+						stroke-width="4"
+					></line>
+					<line
+						x1="10"
+						y1="20"
+						x2="40"
+						y2="20"
+						stroke="black"
+						stroke-width="4"
+					></line>
+					<line
+						x1="10"
+						y1="30"
+						x2="40"
+						y2="30"
+						stroke="black"
+						stroke-width="4"
+					></line>
+				</svg>
+				<svg width="50" height="40" class="svg2" id="svg2">
+					<line
+						x1="10"
+						y1="30"
+						x2="40"
+						y2="10"
+						stroke="black"
+						stroke-width="4"
+					></line>
+					<line
+						x1="10"
+						y1="10"
+						x2="40"
+						y2="30"
+						stroke="black"
+						stroke-width="4"
+					></line>
+				</svg>
+			</div>
 
-        <ul class="nav_menu">
-            <span id="menuTarget"></span>
-            <li v-for="item in navList" :class="item.class"><a :href="item.href" v-html="item.name"></a>
-                <ul>
-                    <li v-for="liList in item.ul"><a :href="liList.href">{{liList.name}}</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div id="touchMenu">
-            <svg width="50" height="40" class="svg1" id="svg1">
-                <line x1="10" y1="10" x2="40" y2="10" stroke="black" stroke-width="4"> </line>
-                <line x1="10" y1="20" x2="40" y2="20" stroke="black" stroke-width="4"> </line>
-                <line x1="10" y1="30" x2="40" y2="30" stroke="black" stroke-width="4"> </line>
-            </svg>
-            <svg width="50" height="40" class="svg2" id="svg2">
-                <line x1="10" y1="30" x2="40" y2="10" stroke="black" stroke-width="4"> </line>
-                <line x1="10" y1="10" x2="40" y2="30" stroke="black" stroke-width="4"> </line>
-            </svg>
-        </div>
+			<ul class="mob_menu">
+				<li v-for="item in mobNavList" :class="item.class">
+					<a :href="item.href" v-html="item.name"></a>
+				</li>
+				<div>
+					<ul class="menu5_more">
+						<li v-for="item in mobNavList[5].ul">
+							<a :href="item.href">{{item.name}}</a>
+						</li>
+					</ul>
+				</div>
+			</ul>
+		</nav>
 
-        <ul class="mob_menu">
-            <li v-for="item in mobNavList" :class="item.class"><a :href="item.href" v-html="item.name"></a>
-            </li>
-            <div>
-                <ul class="menu5_more">
-                    <li v-for="item in mobNavList[5].ul"><a :href="item.href">{{item.name}}</a></li>
-                </ul>
-            </div>
-        </ul>
-    </nav>
+		<div class="breadcrumbs">
+			當前位置: <a href="./index.html">首頁</a
+			><a href="./cssExplain.html">CSS</a>
+		</div>
+		<article class="banner" id="banner" v-cloak>
+			<div class="banner_left" @click.stop="imgSwitch(keyN-1)">
+				<img src="./images/chevron-left.svg" />
+			</div>
+			<div class="banner_right" @click.stop="imgSwitch(keyN+1)">
+				<img src="./images/chevron-right.svg" />
+			</div>
+			<a
+				v-for="(img,index) in banner"
+				:href="img.href"
+				v-show="index === bannerKey && width>=1024"
+				:class="{show:index == bannerKey}"
+				><img :src="img.src" alt="img.alt"
+			/></a>
+			<a
+				v-for="(img,index) in mobBanner"
+				:href="img.href"
+				v-show="index === mobBannerKey && width<=1023"
+				:class="{show:index == mobBannerKey}"
+				><img :src="img.src" alt="img.alt"
+			/></a>
+		</article>
+		<main>
+			<section class="content">
+				<header class="header">
+					<h2>前言</h2>
+					<p>
+						CSS是控制呈現在網頁中元素的技術，好比HTML是骨架，而css就是皮膚，而透過css的樣式調整可以將網頁呈現的畫面任意改變，以下圖示為例，利用css將區塊拼湊成一個網頁，用以呈現給使用者。
+					</p>
+					<img
+						src="./images/css_label.png"
+						alt="網頁中區塊的圖片"
+						title="網頁區塊圖片"
+						class="max_w400"
+					/>
+					<p>
+						CSS與UI/UX息息相關，在網頁中如何不使用文字透過css呈現樣式也可以讓使用者了解含意是一條每位網頁設計師必修之路。
+					</p>
+				</header>
 
+				<div class="code">
+					<h3>CSS使用說明</h3>
+					<p>
+						在網頁中有許多種方式可以對元素進行樣式設定，在開始css前建議先安裝<a
+							href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
+							target="new"
+							>Live Server</a
+						>使用Live
+						Server開發時儲存檔案會自動重新載入畫面可以省下手動重新整理的時間，以下舉出最常見的三種設定style方式
+					</p>
+					<ol>
+						<li>
+							&lt;h4 style="color: rgb(0, 0, 255);
+							font-size:30px">我是第一段測試文字&lt;/h4>
+						</li>
+						<p>網頁中會呈現</p>
+						<h4 style="color: rgb(0, 0, 255); font-size: 30px">
+							我是第一段測試文字
+						</h4>
 
-    <div class="breadcrumbs">當前位置: <a href="./index.html">首頁</a><a href="./cssExplain.html">CSS</a></div>
-    <article class="banner" id="banner" v-cloak>
-        <div class="banner_left" @click.stop="imgSwitch(keyN-1)">
-            <img src="./images/chevron-left.svg">
-        </div>
-        <div class="banner_right" @click.stop="imgSwitch(keyN+1)">
-            <img src="./images/chevron-right.svg">
-        </div>
-        <a v-for="(img,index) in banner" :href="img.href" v-show="index === bannerKey && width>=1024" :class="{show:index == bannerKey}" ><img :src="img.src" alt="img.alt"></a> 
-        <a v-for="(img,index) in mobBanner" :href="img.href" v-show="index === mobBannerKey && width<=1023" :class="{show:index == mobBannerKey}" ><img :src="img.src" alt="img.alt"></a>
-    </article>
-    <main>
-
-        
-        <section class="content">
-
-            <header class="header">
-                <h2>前言</h2>
-                <p>CSS是控制呈現在網頁中元素的技術，好比HTML是骨架，而css就是皮膚，而透過css的樣式調整可以將網頁呈現的畫面任意改變，以下圖示為例，利用css將區塊拼湊成一個網頁，用以呈現給使用者。</p>
-                <img src="./images/css_label.png" alt="網頁中區塊的圖片" title="網頁區塊圖片" class="max_w400">
-                <p>CSS與UI/UX息息相關，在網頁中如何不使用文字透過css呈現樣式也可以讓使用者了解含意是一條每位網頁設計師必修之路。</p>
-            </header>
-
-
-            <div class="code">
-                <h3>CSS使用說明</h3>
-                <p>在網頁中有許多種方式可以對元素進行樣式設定，在開始css前建議先安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>使用Live Server開發時儲存檔案會自動重新載入畫面可以省下手動重新整理的時間，以下舉出最常見的三種設定style方式</p>
-                <ol>
-                    <li>&lt;h4 style="color: rgb(0, 0, 255); font-size:30px">我是第一段測試文字&lt;/h4> </li>
-                    <p>網頁中會呈現</p><h4 style="color: rgb(0, 0, 255); font-size:30px">我是第一段測試文字</h4>
-                    
-                    在網頁中任意位置(建議在head標籤內寫入)
-                    <li><pre>
+						在網頁中任意位置(建議在head標籤內寫入)
+						<li>
+							<pre>
     &lt;style>
         .test_text01{
                     color: rgb(205, 50, 50);
                     font-size:30px;
         }
     &lt;/style>
-</pre></li>
-                    後，在任意位置輸入&lt;p class="test_text01">我是第二段測試文字&lt;/p><br>網頁中會呈現
-                    <style>
-                        .test_text01{
-                            color: rgb(205, 50, 50);
-                            font-size:30px;
-                        }
-                    </style>
-                    <p class="test_text01">我是第二段測試文字</p>
-                    在網頁的底部(&lt;/body>)前寫入
-                        <li><pre>
+</pre
+							>
+						</li>
+						後，在任意位置輸入&lt;p
+						class="test_text01">我是第二段測試文字&lt;/p><br />網頁中會呈現
+						<style>
+							.test_text01 {
+								color: rgb(205, 50, 50);
+								font-size: 30px;
+							}
+						</style>
+						<p class="test_text01">我是第二段測試文字</p>
+						在網頁的底部(&lt;/body>)前寫入
+						<li>
+							<pre>
     &lt;script>
         let test_text02 = document.getElementById('test_text02')
         test_text02.style.fontSize = '30px'
         test_text02.style.color = 'rgb(0, 255, 255)'
     &lt;/script>
-</pre></li>
-                    後在前面的任意位置輸入&lt;p id="test_text02">我是第三段測試文字&lt;/p><br>網頁中會呈現
-                    <p id="test_text02">我是第三段測試文字</p>
-                </ol>
-                <br>
-                <p>以上是常見設定style樣式的方式，每個方法都有不同的使用時機，設定網站頁面的css通常會採用第二種方式去掉頭尾style標籤後獨立製作檔案，新增資料夾命名為css後放入，其css副檔名必須為.css，在head標籤中使用&lt;link rel="stylesheet" href="css位置">導入樣式。</p>
-                <p>css在設定中會有權重問題，一般而言css的權重是由以下由小至大做排序，設定重複的樣式會已權重越大為優先覆蓋。</p>
-                <h5>class > id > 標籤內直接輸入style控制 > !important</h5>
-                <p>單一一個class的權重是最小的，而important的權重是最大的，任何在屬性後方加上 !important 就會蓋過其他地方設置的屬性，因此若非必要盡量避免使用該參數避免後續維護困難。</p>
-                <h3>以下將針對CSS的選取器做一些簡單介紹</h3>
-                <ol>
-                    <li>#idName</li>
-                    <p>用途:選取符合id的對象，權重占比非常高若非必要樣式設定建議皆使用class</p>
-                    <li>.className .className</li>
-                    <p>用途:選取子層所有符合class名稱的元素</p>
-                    <li>.className>.className</li>
-                    <p>用途:選取子層第一層符合class名稱的元素</p>
-                    <li>.className + .className</li>
-                    <p>用途:選取符合class名稱後一個class名稱的元素</p>
-                    <li>.className ~ .className</li>
-                    <p>用途:選取同一層且之後符合class名稱的元素</p>
-                    <li>.className[type="text"]</li>
-                    <p>用途:選取符合class名稱且帶有type="text"參數的元素，又稱屬性選取器</p>
-                    <li>.className.className2</li>
-                    <p>用途:選取同時擁有兩個class名稱的元素，通常用以觸發動畫條件等</p>
-                    <li>.className.first-of-type</li>
-                    <p>用途:選取符合class名稱的第一個元素</p>
-                    <li>.className.last-of-type</li>
-                    <p>用途:選取符合class名稱的最後一個元素</p>
-                    <li>.className:first-child</li>
-                    <p>用途:選取符合class名稱的第一個元素，但選擇的對象同層前方有有其他元素將不會有效果，若需求為指定對象後的第一個元素建議使用first-of-type</p>
-                    <li>.className:last-child</li>
-                    <p>用途:選取符合class名稱的最後一個元素，但選擇的對象同層後方有其他元素將不會有效果，若需求為指定對象後的最後一個元素建議使用last-of-type</p>
-                    <li>.className:nth-of-type()</li>
-                    <p>用途:選取符合class名稱的元素，()內填入數字或odd(單數)或even(雙數)或4n+2(第二個開始每第四個)</p>
-                    <li>.className:nth-child()</li>
-                    <p>用途:選取符合條件參數，與nth-of-type接受參數一樣但會受到其他同層元素的干擾因此排除特殊需求建議優先選用nth-of-type</p>
-                    <li>domName:not(.className)</li>
-                    <p>用途:通常選擇對象為標籤，參數內填入排除的class名稱</p>
-                    <li>.className:hover</li>
-                    <p>用途:選取符合class名稱的元素，當滑鼠觸碰元素時產生效果</p>
-                    <li>.className:focus</li>
-                    <p>用途:通常對象為input，當滑鼠點擊或tab鍵選取時獲得焦點觸發效果</p>
-                    <li>.className:active</li>
-                    <p>用途:選取符合class名稱的元素，當滑鼠按住元素時產生效果</p>
-                    <li>.className:checked</li>
-                    <p>用途:對象必須是input type屬性為checkbox，當對象被勾選時會觸發效果，必須與~或+一起使用，如「.className:checked ~ .className」</p>
-                    <li>.className:before</li>
-                    <p>用途:選取符合class名稱的元素，位置在對象的首字前其css參數內必須要有content:才會有作用，用途非常廣泛可以直接生成一個元素，又稱偽元素</p>
-                    <li>.className:after</li>
-                    <p>用途:選取符合class名稱的元素，與:before類似，位置在對象的尾字後</p>
-                </ol>
-                <p>以上是我們最常使用到的20種css選取器，在正確的時機使用正確的選擇器會讓專案的開發順利一倍以上不止。</p>
-                <p>透過<a href="https://flukeout.github.io/" target="new">css選取器遊戲</a>可以加強css選取能力。</p>
-                <h3>CSS RWD設定及簡單介紹</h3>
-                
-                <p>近年隨著手機裝置普及化手機版網頁需求大增，由於行動裝置的解析度遠遠低於一般電腦螢幕，若沒有設定RWD的網站上使用手機瀏覽會有頻繁縮放、不易閱讀等情況產生，因此2010年國外著名網頁設計師提出RWD的概念，RWD又稱響應式網頁，是一種透過css的技術切換不同的排版設定</p>
-                <p>RWD是透過css3 @media 技術達成的網頁，由於RWD必須兼容多平台的瀏覽體驗因此使用RWD的網站參數多為百分比或相對尺寸(em/rem)，而不是像素(px)，在學習製作網站的過程如何熟練的運用RWD技術是一個非常重要的開發方式。</p>
-                <p>@media的參數有all(全部)、print(印表機)、screen(電腦螢幕/手機螢幕等)、speech(螢幕閱讀器)...等，在這邊只針對最泛用的screen做介紹。</p>
-                <ol>    
-                    <li>@media screen and (max-width:1024px){ ...css參數 }</li>
-                    <p>最常見針對智平板電腦設定的尺寸，觸發條件為當瀏覽器寬度等於或小於1024px時</p>
-                    <li>@media screen and (max-width:768px){ ...css參數 }</li>
-                    <p>最常見針對智慧型手機設定的尺寸，觸發條件為當瀏覽器寬度等於或小於768px時</p>
-                    <li>@media screen and (min-width:1025px){ ...css參數 }</li>
-                    <p>針對桌上型螢幕設定的尺寸，觸發條件為當瀏覽器寬度等於或大於1025px時</p>
-                    <li>@media screen and (min-width:1025px) and (max-width:1680px){ ...css參數 }</li>
-                    <p>針對桌上型螢幕設定的尺寸，觸發條件為當瀏覽器寬度等於或大於1025px且小於等於1680px時</p>
-                </ol>
-                <p>在這裡and是一個條件，一個@media可以有多個條件做判斷，如果不輸入screen and 默認值將會是all，在css權重同等的情況下@media內的css參數會優先執行。</p>
-                <p>知名的網頁框架「Bootstrap」是採用6個尺寸條件為判定基準，分別為低於576px、576~768px、768~992px、992~1200px、1200~1400px、1400px以上，對css有一個系統概念之後自行開發類似Bootstrap的格線系統並不是太難的問題</p>
-                <h3>常見的CSS語法及簡單介紹</h3>
-                <ol>
-                    <li>max-width</li>
-                    <p>設定元素的最大寬度，當小於時會自動縮小</p>
-                    <li>width</li>
-                    <p>設定元素的寬度</p>
-                    <li>height</li>
-                    <p>設定元素的高度，通常不設置讓子元素自動撐開</p>
-                    <li>color</li>
-                    <p>設定文字顏色</p>
-                    <li>font-size</li>
-                    <p>設定文字大小</p>
-                    <li>text-align</li>
-                    <p>設定文字位置</p>
-                    <li>font-weight</li>
-                    <p>設定文字粗細</p>
-                    <li>word-wrap</li>
-                    <p>設定文字換行條件</p>
-                    <li>line-height</li>
-                    <p>設定文字的行高</p>
-                    <li>letter-spacing</li>
-                    <p>設定文字之間的行距</p>
-                    <li>text-decoration</li>
-                    <p>設定文字的修飾線</p>
-                    <li>list-style</li>
-                    <p>設定有序/無序清單的樣式型態</p>
-                    <li>background</li>
-                    <p>設定背景型式，默認為顏色可以使用url參數插入圖片，設定linear-gradient可以設定角度變化與漸層色</p>
-                    <li>background-size</li>
-                    <p>設定背景圖片尺寸</p>
-                    <li>background-position</li>
-                    <p>設定背景圖片位置</p>
-                    <li>background-repeat</li>
-                    <p>設定背景圖片是否重複出現</p>
-                    <li>圖片屬性object-fit</li>
-                    <p>控制圖片尺寸屬性</p>
-                    <li>margin</li>
-                    <p>元素與元素之間的距離(外距)</p>
-                    <li>padding</li>
-                    <p>元素內的距離(內距)</p>
-                    <li>box-sizing</li>
-                    <p>設定元素的尺寸設定方式，該參數通常與padding一起使用</p>
-                    <li>position</li>
-                    <p>設定元素的位置，使用relative或absoluter設定位置型態須搭配top、left、right、bottom其中兩個以上參數使用</p>
-                    <li>cursor</li>
-                    <p>設定滑鼠觸碰至元素時顯示的狀態</p>
-                    <li>z-index</li>
-                    <p>設定元素的重疊層數，通常與position一起使用</p>
-                    <li>display</li>
-                    <p>設定元素的顯示型態，參數有flex(並排)、none(消失)等，flex通常會搭配justify-content(主軸對齊)、align-items(次軸對齊)一起使用</p>
-                    <li>float</li>
-                    <p>設定元素浮動顯示</p>
-                    <li>opacity</li>
-                    <p>設定元素透明度</p>
-                    <li>transition</li>
-                    <p>設定元素屬性觸發切換時以動畫方式呈現</p>
-                    <li>@keyframes</li>
-                    <p>設定動畫的關鍵幀狀態，瀏覽器會自動處理順暢切換</p>
-                    <li>animation</li>
-                    <p>設定使用哪種動畫影格效果，必須搭配@keyframes</p>
-                    <li>transform</li>
-                    <p>設定元素的變型方式</p>
-                    <li>border</li>
-                    <p>設定邊框線樣式</p>
-                    <li>border-radius</li>
-                    <p>設定元素四邊圓角</p>
-                    <li>overflow</li>
-                    <p>設定子元素超出父元素時呈現方式</p>
-                    <li>vertical-align</li>
-                    <p>設定行內元素的垂直對齊方式</p>
-                    <li>perspective</li>
-                    <p>設定元素3D可視屬性，該參數會讓元素產生3D立體感</p>
-                </ol>
-                <p>以上，是最常見的css語法，在這裡僅針對樣式做簡單說明，更詳細的屬性參數與使用說明需參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax" target="new">MDN CSS說明</a>。</p>
-                <p>其中css語法有些為縮寫可接受多個參數，有些必須與前置參數才可使用，要想徹底熟練運用這些語法只有經過不斷的練習與使用才能達成。</p>
-                <p>針對display:flex屬性推薦透過<a href="https://flexboxfroggy.com/#zh-tw" target="new">青蛙遊戲</a>可以有效幫助了解flex的應用。</p>
-                <h3 class="mg_bottom10">預處理器</h3>
-                <p>在css中經常會做重複同樣的事(撰寫重複的class名稱)，尤其開發中大型網站時消耗在這上面的時間會更明顯，因此使用預處理器處理css可以有效減少重複程式碼的編寫時間。</p>
-                <p>目前主流預處理器有LESS、SASS、SCSS三種，以下以SCSS做介紹</p>
-                <ul class="mg_top10 flex wrap left icon_check">
-                    <p class="mark">使用SCSS的好處</p>
-                    <li>省下大量重複的class名稱，巢狀結構下優勢體現越大</li>
-                    <li>建立變數統一樣式或透過變數計算得出所需要的結果值</li>
-                    <li>可以使用函式的方式透過呼叫給予參數後計算得出回傳值</li>
-                    <li>使用模組化設計，提升資源使用效率以及方便管理</li>
-                    <li>下載他人的SCSS工具包就可以快速使用他人寫好的功能</li>
-                </ul>
-                <ul class="mg_top10 flex wrap left icon_x">
-                    <p class="mark">使用SCSS的缺點</p>
-                    <li>需要額外的時間成本學習，初次面對程式的人較難以精通</li>
-                    <li>沒了</li>
-                </ul>
-                <p class="mg_top10">看起來使用scss幾乎百利而無一害對吧?在開始編寫SCSS前除了建議安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="new">Live Server</a>之外，還要安裝<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass" target="new">Live Sass Compiler</a>，後者可以協助我們將scss轉換成.css檔案。</p>
-                <p>新增一個名為style.scss檔案後使用vs code右下角Watch Sass按鈕執行Live Sass Compiler功能，之後只要在style.scss底下編寫相關語法儲存時就會自動轉換並輸出一個同名.css的檔案。</p>
-                <p>以下是一個scss轉換過程影片。</p>
-                <video src="./video/scss.mp4" controls class="video mg_top10"></video>
-                <h3>開始使用SCSS</h3>
-                <p>以下是使用css與scss的比較程式碼</p>
-                <ol>
-                    HTML結構:
-                    <li>
-    <pre>
+</pre
+							>
+						</li>
+						後在前面的任意位置輸入&lt;p
+						id="test_text02">我是第三段測試文字&lt;/p><br />網頁中會呈現
+						<p id="test_text02">我是第三段測試文字</p>
+					</ol>
+					<br />
+					<p>
+						以上是常見設定style樣式的方式，每個方法都有不同的使用時機，設定網站頁面的css通常會採用第二種方式去掉頭尾style標籤後獨立製作檔案，新增資料夾命名為css後放入，其css副檔名必須為.css，在head標籤中使用&lt;link
+						rel="stylesheet" href="css位置">導入樣式。
+					</p>
+					<p>
+						css在設定中會有權重問題，一般而言css的權重是由以下由小至大做排序，設定重複的樣式會已權重越大為優先覆蓋。
+					</p>
+					<h5>class > id > 標籤內直接輸入style控制 > !important</h5>
+					<p>
+						單一一個class的權重是最小的，而important的權重是最大的，任何在屬性後方加上
+						!important
+						就會蓋過其他地方設置的屬性，因此若非必要盡量避免使用該參數避免後續維護困難。
+					</p>
+					<h3>以下將針對CSS的選取器做一些簡單介紹</h3>
+					<ol>
+						<li>#idName</li>
+						<p>
+							用途:選取符合id的對象，權重占比非常高若非必要樣式設定建議皆使用class
+						</p>
+						<li>.className .className</li>
+						<p>用途:選取子層所有符合class名稱的元素</p>
+						<li>.className>.className</li>
+						<p>用途:選取子層第一層符合class名稱的元素</p>
+						<li>.className + .className</li>
+						<p>用途:選取符合class名稱後一個class名稱的元素</p>
+						<li>.className ~ .className</li>
+						<p>用途:選取同一層且之後符合class名稱的元素</p>
+						<li>.className[type="text"]</li>
+						<p>
+							用途:選取符合class名稱且帶有type="text"參數的元素，又稱屬性選取器
+						</p>
+						<li>.className.className2</li>
+						<p>用途:選取同時擁有兩個class名稱的元素，通常用以觸發動畫條件等</p>
+						<li>.className.first-of-type</li>
+						<p>用途:選取符合class名稱的第一個元素</p>
+						<li>.className.last-of-type</li>
+						<p>用途:選取符合class名稱的最後一個元素</p>
+						<li>.className:first-child</li>
+						<p>
+							用途:選取符合class名稱的第一個元素，但選擇的對象同層前方有有其他元素將不會有效果，若需求為指定對象後的第一個元素建議使用first-of-type
+						</p>
+						<li>.className:last-child</li>
+						<p>
+							用途:選取符合class名稱的最後一個元素，但選擇的對象同層後方有其他元素將不會有效果，若需求為指定對象後的最後一個元素建議使用last-of-type
+						</p>
+						<li>.className:nth-of-type()</li>
+						<p>
+							用途:選取符合class名稱的元素，()內填入數字或odd(單數)或even(雙數)或4n+2(第二個開始每第四個)
+						</p>
+						<li>.className:nth-child()</li>
+						<p>
+							用途:選取符合條件參數，與nth-of-type接受參數一樣但會受到其他同層元素的干擾因此排除特殊需求建議優先選用nth-of-type
+						</p>
+						<li>domName:not(.className)</li>
+						<p>用途:通常選擇對象為標籤，參數內填入排除的class名稱</p>
+						<li>.className:hover</li>
+						<p>用途:選取符合class名稱的元素，當滑鼠觸碰元素時產生效果</p>
+						<li>.className:focus</li>
+						<p>用途:通常對象為input，當滑鼠點擊或tab鍵選取時獲得焦點觸發效果</p>
+						<li>.className:active</li>
+						<p>用途:選取符合class名稱的元素，當滑鼠按住元素時產生效果</p>
+						<li>.className:checked</li>
+						<p>
+							用途:對象必須是input
+							type屬性為checkbox，當對象被勾選時會觸發效果，必須與~或+一起使用，如「.className:checked
+							~ .className」
+						</p>
+						<li>.className:before</li>
+						<p>
+							用途:選取符合class名稱的元素，位置在對象的首字前其css參數內必須要有content:才會有作用，用途非常廣泛可以直接生成一個元素，又稱偽元素
+						</p>
+						<li>.className:after</li>
+						<p>
+							用途:選取符合class名稱的元素，與:before類似，位置在對象的尾字後
+						</p>
+					</ol>
+					<p>
+						以上是我們最常使用到的20種css選取器，在正確的時機使用正確的選擇器會讓專案的開發順利一倍以上不止。
+					</p>
+					<p>
+						透過<a href="https://flukeout.github.io/" target="new"
+							>css選取器遊戲</a
+						>可以加強css選取能力。
+					</p>
+					<h3>CSS RWD設定及簡單介紹</h3>
+
+					<p>
+						近年隨著手機裝置普及化手機版網頁需求大增，由於行動裝置的解析度遠遠低於一般電腦螢幕，若沒有設定RWD的網站上使用手機瀏覽會有頻繁縮放、不易閱讀等情況產生，因此2010年國外著名網頁設計師提出RWD的概念，RWD又稱響應式網頁，是一種透過css的技術切換不同的排版設定
+					</p>
+					<p>
+						RWD是透過css3 @media
+						技術達成的網頁，由於RWD必須兼容多平台的瀏覽體驗因此使用RWD的網站參數多為百分比或相對尺寸(em/rem)，而不是像素(px)，在學習製作網站的過程如何熟練的運用RWD技術是一個非常重要的開發方式。
+					</p>
+					<p>
+						@media的參數有all(全部)、print(印表機)、screen(電腦螢幕/手機螢幕等)、speech(螢幕閱讀器)...等，在這邊只針對最泛用的screen做介紹。
+					</p>
+					<ol>
+						<li>@media screen and (max-width:1024px){ ...css參數 }</li>
+						<p>
+							最常見針對智平板電腦設定的尺寸，觸發條件為當瀏覽器寬度等於或小於1024px時
+						</p>
+						<li>@media screen and (max-width:768px){ ...css參數 }</li>
+						<p>
+							最常見針對智慧型手機設定的尺寸，觸發條件為當瀏覽器寬度等於或小於768px時
+						</p>
+						<li>@media screen and (min-width:1025px){ ...css參數 }</li>
+						<p>
+							針對桌上型螢幕設定的尺寸，觸發條件為當瀏覽器寬度等於或大於1025px時
+						</p>
+						<li>
+							@media screen and (min-width:1025px) and (max-width:1680px){
+							...css參數 }
+						</li>
+						<p>
+							針對桌上型螢幕設定的尺寸，觸發條件為當瀏覽器寬度等於或大於1025px且小於等於1680px時
+						</p>
+					</ol>
+					<p>
+						在這裡and是一個條件，一個@media可以有多個條件做判斷，如果不輸入screen
+						and
+						默認值將會是all，在css權重同等的情況下@media內的css參數會優先執行。
+					</p>
+					<p>
+						知名的網頁框架「Bootstrap」是採用6個尺寸條件為判定基準，分別為低於576px、576~768px、768~992px、992~1200px、1200~1400px、1400px以上，對css有一個系統概念之後自行開發類似Bootstrap的格線系統並不是太難的問題
+					</p>
+					<h3>常見的CSS語法及簡單介紹</h3>
+					<ol>
+						<li>max-width</li>
+						<p>設定元素的最大寬度，當小於時會自動縮小</p>
+						<li>width</li>
+						<p>設定元素的寬度</p>
+						<li>height</li>
+						<p>設定元素的高度，通常不設置讓子元素自動撐開</p>
+						<li>color</li>
+						<p>設定文字顏色</p>
+						<li>font-size</li>
+						<p>設定文字大小</p>
+						<li>text-align</li>
+						<p>設定文字位置</p>
+						<li>font-weight</li>
+						<p>設定文字粗細</p>
+						<li>word-wrap</li>
+						<p>設定文字換行條件</p>
+						<li>line-height</li>
+						<p>設定文字的行高</p>
+						<li>letter-spacing</li>
+						<p>設定文字之間的行距</p>
+						<li>text-decoration</li>
+						<p>設定文字的修飾線</p>
+						<li>list-style</li>
+						<p>設定有序/無序清單的樣式型態</p>
+						<li>background</li>
+						<p>
+							設定背景型式，默認為顏色可以使用url參數插入圖片，設定linear-gradient可以設定角度變化與漸層色
+						</p>
+						<li>background-size</li>
+						<p>設定背景圖片尺寸</p>
+						<li>background-position</li>
+						<p>設定背景圖片位置</p>
+						<li>background-repeat</li>
+						<p>設定背景圖片是否重複出現</p>
+						<li>圖片屬性object-fit</li>
+						<p>控制圖片尺寸屬性</p>
+						<li>margin</li>
+						<p>元素與元素之間的距離(外距)</p>
+						<li>padding</li>
+						<p>元素內的距離(內距)</p>
+						<li>box-sizing</li>
+						<p>設定元素的尺寸設定方式，該參數通常與padding一起使用</p>
+						<li>position</li>
+						<p>
+							設定元素的位置，使用relative或absoluter設定位置型態須搭配top、left、right、bottom其中兩個以上參數使用
+						</p>
+						<li>cursor</li>
+						<p>設定滑鼠觸碰至元素時顯示的狀態</p>
+						<li>z-index</li>
+						<p>設定元素的重疊層數，通常與position一起使用</p>
+						<li>display</li>
+						<p>
+							設定元素的顯示型態，參數有flex(並排)、none(消失)等，flex通常會搭配justify-content(主軸對齊)、align-items(次軸對齊)一起使用
+						</p>
+						<li>float</li>
+						<p>設定元素浮動顯示</p>
+						<li>opacity</li>
+						<p>設定元素透明度</p>
+						<li>transition</li>
+						<p>設定元素屬性觸發切換時以動畫方式呈現</p>
+						<li>@keyframes</li>
+						<p>設定動畫的關鍵幀狀態，瀏覽器會自動處理順暢切換</p>
+						<li>animation</li>
+						<p>設定使用哪種動畫影格效果，必須搭配@keyframes</p>
+						<li>transform</li>
+						<p>設定元素的變型方式</p>
+						<li>border</li>
+						<p>設定邊框線樣式</p>
+						<li>border-radius</li>
+						<p>設定元素四邊圓角</p>
+						<li>overflow</li>
+						<p>設定子元素超出父元素時呈現方式</p>
+						<li>vertical-align</li>
+						<p>設定行內元素的垂直對齊方式</p>
+						<li>perspective</li>
+						<p>設定元素3D可視屬性，該參數會讓元素產生3D立體感</p>
+					</ol>
+					<p>
+						以上，是最常見的css語法，在這裡僅針對樣式做簡單說明，更詳細的屬性參數與使用說明需參考<a
+							href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax"
+							target="new"
+							>MDN CSS說明</a
+						>。
+					</p>
+					<p>
+						其中css語法有些為縮寫可接受多個參數，有些必須與前置參數才可使用，要想徹底熟練運用這些語法只有經過不斷的練習與使用才能達成。
+					</p>
+					<p>
+						針對display:flex屬性推薦透過<a
+							href="https://flexboxfroggy.com/#zh-tw"
+							target="new"
+							>青蛙遊戲</a
+						>可以有效幫助了解flex的應用。
+					</p>
+					<h3 class="mg_bottom10">預處理器</h3>
+					<p>
+						在css中經常會做重複同樣的事(撰寫重複的class名稱)，尤其開發中大型網站時消耗在這上面的時間會更明顯，因此使用預處理器處理css可以有效減少重複程式碼的編寫時間。
+					</p>
+					<p>目前主流預處理器有LESS、SASS、SCSS三種，以下以SCSS做介紹</p>
+					<ul class="mg_top10 flex wrap left icon_check">
+						<p class="mark">使用SCSS的好處</p>
+						<li>省下大量重複的class名稱，巢狀結構下優勢體現越大</li>
+						<li>建立變數統一樣式或透過變數計算得出所需要的結果值</li>
+						<li>可以使用函式的方式透過呼叫給予參數後計算得出回傳值</li>
+						<li>使用模組化設計，提升資源使用效率以及方便管理</li>
+						<li>下載他人的SCSS工具包就可以快速使用他人寫好的功能</li>
+					</ul>
+					<ul class="mg_top10 flex wrap left icon_x">
+						<p class="mark">使用SCSS的缺點</p>
+						<li>需要額外的時間成本學習，初次面對程式的人較難以精通</li>
+						<li>沒了</li>
+					</ul>
+					<p class="mg_top10">
+						看起來使用scss幾乎百利而無一害對吧?在開始編寫SCSS前除了建議安裝<a
+							href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
+							target="new"
+							>Live Server</a
+						>之外，還要安裝<a
+							href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass"
+							target="new"
+							>Live Sass Compiler</a
+						>，後者可以協助我們將scss轉換成.css檔案。
+					</p>
+					<p>
+						新增一個名為style.scss檔案後使用vs code右下角Watch Sass按鈕執行Live
+						Sass
+						Compiler功能，之後只要在style.scss底下編寫相關語法儲存時就會自動轉換並輸出一個同名.css的檔案。
+					</p>
+					<p>以下是一個scss轉換過程影片。</p>
+					<video src="./video/scss.mp4" controls class="video mg_top10"></video>
+					<h3>開始使用SCSS</h3>
+					<p>以下是使用css與scss的比較程式碼</p>
+					<ol>
+						HTML結構:
+						<li>
+							<pre>
     &lt;div class="wrap">
         &lt;div>
             &lt;p>left&lt;/p>
@@ -300,11 +485,12 @@
         &lt;div>
             &lt;p>right&lt;/p>
         &lt;/div>
-    &lt;/div></pre>
-                    </li>
-            使用css編寫:
-                    <li>
-    <pre>
+    &lt;/div></pre
+							>
+						</li>
+						使用css編寫:
+						<li>
+							<pre>
     .wrap {
         width: 500px;
         background-color: yellow;
@@ -328,12 +514,13 @@
         color: blue;
         letter-spacing: 0.9px;
         text-align: center;
-    }</pre>
-                    </li>
-                
-                使用scss編寫:
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+
+						使用scss編寫:
+						<li>
+							<pre>
     .wrap{
         width:500px;
         background-color:yellow;
@@ -352,15 +539,20 @@
                 text-align: center;
             }
         }
-    }</pre>
-                    </li>
-                    <p>在寫法上是否非常相似?雖然scss在處理巢狀結構非常方便，但實務上使用時並不建議選取過多層，與css一樣避免後續權重計算複雜造成維護困難，當然scss的作用可不只有這一點而已，下面針對更多scss應用做介紹。</p>
-                </ol>
-                <h3>$變數</h3>
-                <p>雖然css也有變數可以使用，但是在scss中使用變數會更簡單且多樣化，與程式一樣變數的位置通常在最頂端，以下是一些基本應用。</p>
-                <ol>
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+						<p>
+							在寫法上是否非常相似?雖然scss在處理巢狀結構非常方便，但實務上使用時並不建議選取過多層，與css一樣避免後續權重計算複雜造成維護困難，當然scss的作用可不只有這一點而已，下面針對更多scss應用做介紹。
+						</p>
+					</ol>
+					<h3>$變數</h3>
+					<p>
+						雖然css也有變數可以使用，但是在scss中使用變數會更簡單且多樣化，與程式一樣變數的位置通常在最頂端，以下是一些基本應用。
+					</p>
+					<ol>
+						<li>
+							<pre>
     $text:20px;
     $textColor:white;
     $textHoverColor:orange;
@@ -374,15 +566,20 @@
         >span:hover{
             color:$textHoverColor;
         }
-    }</pre>
-                </li>
-                <p>這邊只是一些初步的變數應用，可以透過其他方式利用變數計算出預期的結果值。</p>
-                </ol>
-                <h3>@extend繼承</h3>
-                <p>在scss中如果有很多重複的樣式可以使用繼承的方式讓scss幫你處理，以下是一個簡單的繼承範例。</p>
-                <ol>
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+						<p>
+							這邊只是一些初步的變數應用，可以透過其他方式利用變數計算出預期的結果值。
+						</p>
+					</ol>
+					<h3>@extend繼承</h3>
+					<p>
+						在scss中如果有很多重複的樣式可以使用繼承的方式讓scss幫你處理，以下是一個簡單的繼承範例。
+					</p>
+					<ol>
+						<li>
+							<pre>
     .box{
         border-radius: 8px;
         border: 1px solid #ff5252;
@@ -394,11 +591,12 @@
         @extend .box;
         width: 300px;
         height: 250px;
-    }</pre>
-                    </li>
-                    以下是編譯後的結果
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+						以下是編譯後的結果
+						<li>
+							<pre>
     .box, .box2 {
         border-radius: 8px;
         border: 1px solid #ff5252;
@@ -410,14 +608,17 @@
     .box2 {
         width: 300px;
         height: 250px;
-    }</pre>
-                    </li>
-                </ol>
-                <h3>@mixin管理樣式</h3>
-                <p>繼承雖然好用但是如果你有參數使用需求可以改用mixin，使用mixin的方式很簡單只要將一包寫好的樣式丟入mixin就可以呼叫他使用，以下是一個使用參數的mixin簡單範例。</p>
-                <ol>
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+					</ol>
+					<h3>@mixin管理樣式</h3>
+					<p>
+						繼承雖然好用但是如果你有參數使用需求可以改用mixin，使用mixin的方式很簡單只要將一包寫好的樣式丟入mixin就可以呼叫他使用，以下是一個使用參數的mixin簡單範例。
+					</p>
+					<ol>
+						<li>
+							<pre>
     $text:20px;
     $black:#000000;
     
@@ -433,11 +634,12 @@
     
     .box2{
         @include test1(1)
-    }</pre>
-                    </li>
-                    實際編譯後的css會變成以下
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+						實際編譯後的css會變成以下
+						<li>
+							<pre>
     .box {
         font-size: 20px;
         background-color: #000000;
@@ -448,16 +650,23 @@
         font-size: 20px;
         background-color: #000000;
         opacity: 1;
-    }</pre>
-                    </li>
-                    <p class="no_p">如果有大量相同類似的區塊要用同一種設定那麼我建議你使用extend繼承，而不是mixin，避免會有大量重複的樣式出現在css檔案上</p>
-                    <p class="no_p">使用mixin時如果有放入參數呼叫時也要帶入參數否則會無法輸出結果</p>
-                </ol>
-                <h3>@function函式</h3>
-                <p>終於到最後一個功能了，這邊的講解不會太深入避免營造出使用scss是一件麻煩事的誤會，以下是一個簡單的運算函式。</p>
-                <ol>
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+						<p class="no_p">
+							如果有大量相同類似的區塊要用同一種設定那麼我建議你使用extend繼承，而不是mixin，避免會有大量重複的樣式出現在css檔案上
+						</p>
+						<p class="no_p">
+							使用mixin時如果有放入參數呼叫時也要帶入參數否則會無法輸出結果
+						</p>
+					</ol>
+					<h3>@function函式</h3>
+					<p>
+						終於到最後一個功能了，這邊的講解不會太深入避免營造出使用scss是一件麻煩事的誤會，以下是一個簡單的運算函式。
+					</p>
+					<ol>
+						<li>
+							<pre>
     $text:20px;
     $black:#000000;
     $wrapSize:4;
@@ -474,73 +683,68 @@
     
     .box2{
         font-size: test2(20) / 2.5+px;
-    }</pre>
-                    </li>
-                    <p>函式與mixin相似但是函式會回傳一個值因此必須要含有@return，函式可以選擇不傳入參數，但是參數必須要先給預設值，以下是輸出後的css內容</p>
-                    <li>
-    <pre>
+    }</pre
+							>
+						</li>
+						<p>
+							函式與mixin相似但是函式會回傳一個值因此必須要含有@return，函式可以選擇不傳入參數，但是參數必須要先給預設值，以下是輸出後的css內容
+						</p>
+						<li>
+							<pre>
     .box {
         font-size: 16px;
     }
 
     .box2 {
         font-size: 40px;
-    }</pre>
-                </li>
-                <p>以上，透過函式可以做到更多運算得出我們想要的值。</p>
-            </ol>
-            <p>預處理器熟練後可以讓開發的效率會更高也可以避免掉更多無意義時間，更多scss的教學可以參考<a href="https://www.youtube.com/watch?v=mzuKtTuimEE" target="new">Alex SCSS入門觀念引導</a>。</p>
-        </div>
+    }</pre
+							>
+						</li>
+						<p>以上，透過函式可以做到更多運算得出我們想要的值。</p>
+					</ol>
+					<p>
+						預處理器熟練後可以讓開發的效率會更高也可以避免掉更多無意義時間，更多scss的教學可以參考<a
+							href="https://www.youtube.com/watch?v=mzuKtTuimEE"
+							target="new"
+							>Alex SCSS入門觀念引導</a
+						>。
+					</p>
+				</div>
+			</section>
 
-        </section>
+			<article class="end_text">
+				<h2>小結</h2>
+				<p>
+					無論是網頁設計師，還是前端工程師，對於css熟練度的需求都是無庸置疑的，只有隨時可以透過css切出各種不同的版才是合格的前端人員。
+				</p>
+				<p>
+					只要了解css的運作原理，相信達到運用自如的時間就會是伸手可及的距離。
+				</p>
+				<p>
+					針對css入門影片可以參考<a
+						href="https://www.youtube.com/watch?v=ZavL9y4Adrk&list=PLqivELodHt3iL9PgGHg0_EF86FwdiqCre"
+						target="new"
+						>金魚都能懂系列</a
+					>
+				</p>
+			</article>
+		</main>
 
+		<div id="footer">
+			<footer_component></footer_component>
+		</div>
 
-        <article class="end_text">
-            <h2>小結</h2>
-            <p>無論是網頁設計師，還是前端工程師，對於css熟練度的需求都是無庸置疑的，只有隨時可以透過css切出各種不同的版才是合格的前端人員。</p>
-            <p>只要了解css的運作原理，相信達到運用自如的時間就會是伸手可及的距離。</p>
-            <p>針對css入門影片可以參考<a href="https://www.youtube.com/watch?v=ZavL9y4Adrk&list=PLqivELodHt3iL9PgGHg0_EF86FwdiqCre" target="new">金魚都能懂系列</a></p>
-        </article>
-
-    </main>
-    
-    <footer>
-        <p>&copy; ayvc0420</p> 
-        <div>
-            本站最佳瀏覽解析度為1920x1080，不支援IE瀏覽器
-        </div>
-        <div class="left">
-            <a href="javascript:;" id="goTop" class="footer_img">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                </svg>
-            </a>
-        </div>
-        <div class="right">
-            <a href="javascript:;" title="只是一個github的圖示" class="footer_img">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40 " fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-            </a>
-        </div>
-    </footer>
-
-
-    <script>
-        ;(function(){
-            let test_text02 = document.getElementById('test_text02')
-            test_text02.style.fontSize = '30px'
-            test_text02.style.color = 'rgb(0, 255, 255)'
-        })()
-    </script>
-    
-    <script src="./js/vue_2.6.14.min.js"></script>
-    <script type="module">
-        import './js/navVue.js'
-        import './js/bannerVue.js'
-        import './js/layout.js'
-        import './js/contentAni.js'
-    </script>
-    <script src="./js/isIE.js"></script>
-</body>
+		<script src="./js/vue_2.6.14.min.js"></script>
+		<script type="module">
+			import './js/layout.js';
+		</script>
+		<script>
+			(function () {
+				let test_text02 = document.getElementById('test_text02');
+				test_text02.style.fontSize = '30px';
+				test_text02.style.color = 'rgb(0, 255, 255)';
+			})();
+		</script>
+		<script src="./js/isIE.js"></script>
+	</body>
 </html>

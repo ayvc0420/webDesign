@@ -9,12 +9,12 @@
             banner:[
                 {href:'./htmlExplain.html',src:'./images/banner1.webp',alt:'HTML CODE圖片',title:'前往HTML頁面'},
                 {href:'./cssExplain.html',src:'./images/banner2.webp',alt:'CSS CODE圖片',title:'前往CSS頁面'},
-                {href:'./javaScriptExplain.html',src:'./images/banner3.webp',alt:'JS CODE圖片',title:'前往JS頁面'}
+                {href:'./jsExplain.html',src:'./images/banner3.webp',alt:'JS CODE圖片',title:'前往JS頁面'}
             ],
             mobBanner:[
                 {href:'./htmlExplain.html',src:'./images/mobBanner1.webp',alt:'HTML CODE圖片',title:'前往HTML頁面'},
                 {href:'./cssExplain.html',src:'./images/mobBanner2.webp',alt:'CSS CODE圖片',title:'前往CSS頁面'},
-                {href:'./javaScriptExplain.html',src:'./images/mobBanner3.webp',alt:'JS CODE圖片',title:'前往JS頁面'}
+                {href:'./jsExplain.html',src:'./images/mobBanner3.webp',alt:'JS CODE圖片',title:'前往JS頁面'}
             ]
         },
         methods: {
